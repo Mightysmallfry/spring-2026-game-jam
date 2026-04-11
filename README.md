@@ -1,2 +1,5 @@
-# spring-2026-game-jam
-
+# Spring 2026 Game Jam
+Themes for this game jam were:
+- Medieval
+- Reflection
+- RNG
