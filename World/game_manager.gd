@@ -16,7 +16,7 @@ func _ready() -> void:
 	# current_world_3d = $World_3d/Level_Dev
 	# current_world_3d = $World_3d/level_3
 	
-	# current_gui = $Gui/MainMenu
+	current_gui = $Gui/MainMenu
 
 func change_3d_scene(next_scene : String, delete : bool = true, keep_running : bool = false) -> void:
 	if (current_world_3d != null):

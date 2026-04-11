@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwbqtyscwba2t"]
+
+[ext_resource type="Script" uid="uid://cdgsxrj7glbfg" path="res://Menus/Debug/debug_menu.gd" id="1_3kowi"]
+
+[node name="DebugMenu" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 120)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3kowi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="DebugProperties" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
