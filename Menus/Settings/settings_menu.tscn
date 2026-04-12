@@ -102,3 +102,4 @@ text = "Main Menu"
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioBlock_Master/SliderMaster" to="." method="_on_slider_master_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioBlock_Music/SliderMusic" to="." method="_on_slider_music_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioBlock_SFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="pressed" from="ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]

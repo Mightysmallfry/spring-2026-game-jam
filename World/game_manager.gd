@@ -18,7 +18,8 @@ func _ready() -> void:
 	
 	current_gui = $Gui/MainMenu
 
-func change_3d_scene(next_scene : String, delete : bool = true, keep_running : bool = false) -> void:
+func change_3d_scene(next_scene_path : String, delete : bool = true, keep_running : bool = false) -> void:
+	await Global.transition_manager.transition_fade_out()
 	if (current_world_3d != null):
 		if (delete):
 			current_world_3d.queue_free()
@@ -27,11 +28,13 @@ func change_3d_scene(next_scene : String, delete : bool = true, keep_running : b
 		else:
 			world_3d.remove_child(current_world_3d)
 	
-	var new_scene = load(next_scene).instantiate();
+	Global.transition_manager.transition_fade_in()
+	var new_scene = load(next_scene_path).instantiate();
 	world_3d.add_child(new_scene)
 	current_world_3d = new_scene
 
-func change_2d_scene(next_scene : String, delete : bool = true, keep_running : bool = false) -> void:
+func change_2d_scene(next_scene_path : String, delete : bool = true, keep_running : bool = false) -> void:
+	await Global.transition_manager.transition_fade_out()
 	if (current_world_2d != null):
 		if (delete):
 			current_world_2d.queue_free()
@@ -39,13 +42,15 @@ func change_2d_scene(next_scene : String, delete : bool = true, keep_running : b
 			current_world_2d.visible = false
 		else:
 			world_2d.remove_child(current_world_2d)
-	
-	var new_scene = load(next_scene).instantiate();
+			
+	Global.transition_manager.transition_fade_in()
+	var new_scene = load(next_scene_path).instantiate();
 	world_2d.add_child(new_scene)
 	current_world_2d = new_scene
 
-func change_gui_scene(next_scene : String, delete : bool = true, keep_running : bool = false) -> void:
-	if (current_gui != null):
+func change_gui_scene(next_scene_path : String, delete : bool = true, keep_running : bool = false) -> void:
+	await Global.transition_manager.transition_fade_out()
+	if (current_gui != null):	
 		if (delete):
 			current_gui.queue_free()
 		elif (keep_running):
@@ -53,7 +58,8 @@ func change_gui_scene(next_scene : String, delete : bool = true, keep_running : 
 		else:
 			gui.remove_child(current_gui)
 	
-	var new_scene = load(next_scene).instantiate();
+	Global.transition_manager.transition_fade_in()
+	var new_scene = load(next_scene_path).instantiate();
 	gui.add_child(new_scene)
 	current_gui = new_scene
 	

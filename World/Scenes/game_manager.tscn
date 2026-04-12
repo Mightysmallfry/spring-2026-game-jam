@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwqc0ptsjum4t"]
+[gd_scene load_steps=6 format=3 uid="uid://dwqc0ptsjum4t"]
 
 [ext_resource type="PackedScene" uid="uid://dmg5rqup1xtul" path="res://Menus/MainMenu/main_menu.tscn" id="1_nrqse"]
 [ext_resource type="Script" uid="uid://dtvrdv3ywspc3" path="res://World/game_manager.gd" id="1_sr2ya"]
-[ext_resource type="PackedScene" uid="uid://dhn62n0duqwk2" path="res://Managers/audio_manager.tscn" id="2_76ckp"]
+[ext_resource type="PackedScene" uid="uid://dhn62n0duqwk2" path="res://Managers/audio/audio_manager.tscn" id="2_76ckp"]
 [ext_resource type="PackedScene" uid="uid://cwbqtyscwba2t" path="res://Menus/Debug/debug_menu.tscn" id="2_oq6yk"]
+[ext_resource type="PackedScene" uid="uid://bgh2kvqqxyn6k" path="res://Managers/transition/transition_manager.tscn" id="5_ccgei"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_sr2ya")
@@ -25,8 +26,12 @@ grow_vertical = 2
 [node name="MainMenu" parent="Gui" instance=ExtResource("1_nrqse")]
 layout_mode = 1
 
-[node name="DebugMenu" parent="Gui" instance=ExtResource("2_oq6yk")]
+[node name="TransitionManager" parent="." instance=ExtResource("5_ccgei")]
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="DebugMenu" parent="DebugLayer" instance=ExtResource("2_oq6yk")]
 visible = false
-layout_mode = 0
 offset_right = 360.0
 offset_bottom = 120.0
