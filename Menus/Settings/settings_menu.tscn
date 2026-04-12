@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3gb60orvpvei"]
+
+[ext_resource type="Script" uid="uid://cw6hqekt2yl1a" path="res://Menus/Settings/settings_menu.gd" id="1_1qq1x"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1qq1x")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -115.5
+offset_right = 90.5
+offset_bottom = 115.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AudioBlock_Master" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SliderName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/AudioBlock_Master"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Master Volume
+"
+
+[node name="SliderMaster" type="HSlider" parent="MarginContainer/VBoxContainer/AudioBlock_Master"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.5
+step = 0.001
+
+[node name="AudioBlock_Music" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SliderName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/AudioBlock_Music"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music Volume
+"
+
+[node name="SliderMusic" type="HSlider" parent="MarginContainer/VBoxContainer/AudioBlock_Music"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.5
+step = 0.001
+
+[node name="AudioBlock_SFX" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SliderName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/AudioBlock_SFX"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SFX Volume
+"
+
+[node name="SliderSFX" type="HSlider" parent="MarginContainer/VBoxContainer/AudioBlock_SFX"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.5
+step = 0.001
+
+[node name="ButtonMainMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -100.0
+offset_right = 80.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioBlock_Master/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioBlock_Music/SliderMusic" to="." method="_on_slider_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/AudioBlock_SFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]

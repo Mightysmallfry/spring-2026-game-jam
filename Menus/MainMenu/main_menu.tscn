@@ -85,6 +85,12 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Start Game"
 
+[node name="SettingsButton" type="Button" parent="ButtonContainer/ButtonVList"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings
+"
+
 [node name="CreditsButton" type="Button" parent="ButtonContainer/ButtonVList"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -95,3 +101,7 @@ text = "Credits
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
+
+[connection signal="pressed" from="ButtonContainer/ButtonVList/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/ButtonVList/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/ButtonVList/QuitButton" to="." method="_on_quit_button_pressed"]
