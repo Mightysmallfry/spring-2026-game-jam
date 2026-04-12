@@ -20,12 +20,13 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !visible: return
+
 	add_property("FPS", framesPerSecond, 0)
 	
 	# The fps = 1/delta calculation
 	framesPerSecond = "%.2f" % (1.0/delta)
 	
-
+# Get the menu then call add property in order to add your custom property
 func add_property(title : String, value, order):
 	var target
 	target = DebugProperties.find_child(title, true, false);

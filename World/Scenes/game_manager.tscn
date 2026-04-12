@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwqc0ptsjum4t"]
+[gd_scene load_steps=5 format=3 uid="uid://dwqc0ptsjum4t"]
 
 [ext_resource type="PackedScene" uid="uid://dmg5rqup1xtul" path="res://Menus/MainMenu/main_menu.tscn" id="1_nrqse"]
 [ext_resource type="Script" uid="uid://dtvrdv3ywspc3" path="res://World/game_manager.gd" id="1_sr2ya"]
+[ext_resource type="PackedScene" uid="uid://dhn62n0duqwk2" path="res://Managers/audio_manager.tscn" id="2_76ckp"]
 [ext_resource type="PackedScene" uid="uid://cwbqtyscwba2t" path="res://Menus/Debug/debug_menu.tscn" id="2_oq6yk"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_sr2ya")
+
+[node name="AudioManager" parent="." instance=ExtResource("2_76ckp")]
 
 [node name="World_3d" type="Node3D" parent="."]
 
