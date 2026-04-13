@@ -17,6 +17,7 @@ func _ready() -> void:
 	# current_world_3d = $World_3d/level_3
 	
 	current_gui = $Gui/MainMenu
+	# current_world_2d = $World_2d/
 
 func change_3d_scene(next_scene_path : String, delete : bool = true, keep_running : bool = false) -> void:
 	await Global.transition_manager.transition_fade_out()
