@@ -2,7 +2,7 @@ extends Control
 
 @export var mainMenuMusic : AudioStream
 var mainMenuAudioFadeDuration : float = 1.0
-
+@export var CreditsMusic : AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,3 +27,9 @@ func _on_settings_button_pressed() -> void:
 	
 	#TODO: Something is wrong with changing scene, beware the debug menu
 	Global.game_manager.change_gui_scene("res://Menus/Settings/settings_menu.tscn", false, false)
+
+
+func _on_credits_button_pressed() -> void:
+	Global.audio_manager.pause_music()
+	Global.audio_manager.play_sfx(CreditsMusic)
+	Global.audio_manager.resume_music()
