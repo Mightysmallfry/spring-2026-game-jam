@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2mj4hho2h3yd"]
+
+[ext_resource type="Script" uid="uid://d3yuag0il3d3r" path="res://Buildings/base_building.gd" id="1_fpopy"]
+[ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_2krsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ue0u"]
+
+[node name="BaseBuilding" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_fpopy")
+sprite = NodePath("BuildingSprite")
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_2krsp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4ue0u")
