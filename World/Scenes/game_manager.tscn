@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dhn62n0duqwk2" path="res://Managers/audio/audio_manager.tscn" id="2_76ckp"]
 [ext_resource type="PackedScene" uid="uid://cwbqtyscwba2t" path="res://Menus/Debug/debug_menu.tscn" id="2_oq6yk"]
 [ext_resource type="Shader" uid="uid://colse0vx0wnxl" path="res://Camera/SubpixelCanvas.gdshader" id="3_2a8qe"]
-[ext_resource type="Script" uid="uid://cb6ia7h0ogm0x" path="res://World/Scenes/game_viewport_manager.gd" id="4_maolr"]
+[ext_resource type="Script" uid="uid://cb6ia7h0ogm0x" path="res://World/game_viewport_manager.gd" id="4_maolr"]
 [ext_resource type="PackedScene" uid="uid://bgh2kvqqxyn6k" path="res://Managers/transition/transition_manager.tscn" id="5_ccgei"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_maolr"]

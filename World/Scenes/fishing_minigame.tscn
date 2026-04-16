@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://World/fishing_minigame.gd" id="1_0kedh"]
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
-[ext_resource type="Script" uid="uid://od8lta8xsb47" path="res://Bar_movement.gd" id="2_awxfg"]
 [ext_resource type="Texture2D" uid="uid://nawbcf1jh4cv" path="res://Assets/Patterns/Bars/Fish_target.png" id="2_qdkb4"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
-[ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/Scenes/fishing_target.gd" id="4_spu5d"]
+[ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/fishing_target.gd" id="4_spu5d"]
+[ext_resource type="Script" uid="uid://od8lta8xsb47" path="res://World/Bar_movement.gd" id="5_0kedh"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
 
@@ -15,26 +15,38 @@ size = Vector2(16, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i7cv"]
 size = Vector2(308, 36)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kedh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spu5d"]
 size = Vector2(80, 36)
 
 [node name="FishingGame" type="Node2D"]
 script = ExtResource("1_0kedh")
 
-[node name="Progress_bar_outside" type="Sprite2D" parent="."]
+[node name="UI_container" type="Node2D" parent="."]
 
-[node name="Progress_bar_fill" type="Sprite2D" parent="."]
+[node name="Progress_bar_outside" type="Sprite2D" parent="UI_container"]
+
+[node name="Progress_bar_fill" type="Sprite2D" parent="UI_container"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI_container"]
+unique_name_in_owner = true
+offset_left = 183.0
+offset_right = 199.0
+offset_bottom = 16.0
+scale = Vector2(4, 4)
+fill_mode = 4
+texture_under = ExtResource("6_spu5d")
+texture_progress = ExtResource("7_md58f")
 
 [node name="Fishing_bar_outside" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
 texture = ExtResource("1_quil3")
 
 [node name="GrooveJoint2D" type="GrooveJoint2D" parent="Fishing_bar_outside"]
-position = Vector2(152, 36)
+position = Vector2(140, 35)
 rotation = 1.5707964
 node_a = NodePath("../StaticBody2D")
-node_b = NodePath("../RigidBody2D")
-length = 304.0
+node_b = NodePath("../FishBar")
+length = 273.0
 initial_offset = 152.0
 
 [node name="Fishing_target" type="Sprite2D" parent="Fishing_bar_outside"]
@@ -56,30 +68,19 @@ visible = false
 position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_8i7cv")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Fishing_bar_outside"]
-script = ExtResource("2_awxfg")
+[node name="FishBar" type="CharacterBody2D" parent="Fishing_bar_outside"]
+script = ExtResource("5_0kedh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishing_bar_outside/RigidBody2D"]
-visible = false
-position = Vector2(-1, 36)
-shape = SubResource("RectangleShape2D_0kedh")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishing_bar_outside/FishBar"]
+position = Vector2(-8, 36)
+shape = SubResource("RectangleShape2D_spu5d")
 
-[node name="Fishing_range" type="Sprite2D" parent="Fishing_bar_outside/RigidBody2D"]
-position = Vector2(7, 0)
+[node name="FishBarSprite" type="Sprite2D" parent="Fishing_bar_outside/FishBar"]
 texture = ExtResource("3_qdkb4")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
 autostart = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = 183.0
-offset_right = 199.0
-offset_bottom = 16.0
-scale = Vector2(4, 4)
-fill_mode = 4
-texture_under = ExtResource("6_spu5d")
-texture_progress = ExtResource("7_md58f")
 
 [connection signal="body_entered" from="Fishing_bar_outside/Fishing_target/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Fishing_bar_outside/Fishing_target/Area2D" to="." method="_on_area_2d_body_exited"]

@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_tdlps")
 fishName = "Carp"
+fishMoves = 5
 texture = ExtResource("2_ha6d7")
-length = 83.0
-girth = 55.0
-weight = 9.1
+length = 25.0
+girth = 15.0
+weight = 9.7
 metadata/_custom_type_script = "uid://crt5mth27sk6e"
