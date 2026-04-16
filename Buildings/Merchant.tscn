@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccwmoxxoyy5e6"]
+
+[ext_resource type="Script" uid="uid://tjkne3ynm0mp" path="res://Buildings/merchant.gd" id="1_tnr4m"]
+[ext_resource type="Texture2D" uid="uid://bhso2lx4jfby5" path="res://Assets/Buildings/Merchant.png" id="2_tnr4m"]
+
+[node name="Merchant" type="Node2D" node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
+script = ExtResource("1_tnr4m")
+buildingSprite = NodePath("BuildingSprite")
+InteractArea = NodePath("InteractArea")
+CollisionArea = NodePath("CollisionArea")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea"]
+polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
+
+[node name="BuildingSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_tnr4m")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+polygon = PackedVector2Array(0, 6, 32, 25, 42, 20, 0, -2, -42, 20, -32, 25)

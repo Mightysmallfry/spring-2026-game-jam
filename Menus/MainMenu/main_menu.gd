@@ -8,10 +8,6 @@ var mainMenuAudioFadeDuration : float = 1.0
 func _ready() -> void:
 	Global.audio_manager.play_music(mainMenuMusic, mainMenuAudioFadeDuration)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_start_button_pressed() -> void:
 	# If we have audio for the main game we can remove thissd
 	# Since playing different audio will also fade out the current audio
@@ -32,4 +28,4 @@ func _on_settings_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	Global.audio_manager.pause_music()
 	Global.audio_manager.play_sfx(CreditsMusic)
-	Global.audio_manager.resume_music()
+	# Global.audio_manager.play_music(mainMenuMusic)

@@ -63,7 +63,7 @@ theme_override_constants/margin_bottom = 8
 [node name="GameTitle" type="RichTextLabel" parent="TitleBackground/TitleContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 36
-text = "Pond & Fiddles"
+text = "Fishin' Fealty"
 
 [node name="ButtonContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(120, 180)

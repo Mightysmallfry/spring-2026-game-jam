@@ -1,17 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2mj4hho2h3yd"]
+[gd_scene load_steps=4 format=3 uid="uid://d03ssxqokrv1x"]
 
-[ext_resource type="Script" uid="uid://d3yuag0il3d3r" path="res://Buildings/base_building.gd" id="1_fpopy"]
-[ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_2krsp"]
+[ext_resource type="Script" uid="uid://6n8kdle7ie2t" path="res://Buildings/stone_mason.gd" id="1_gupan"]
+[ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_bp105"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpopy"]
 radius = 8.0
 
-[node name="BaseBuilding" type="Node2D" node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
-script = ExtResource("1_fpopy")
+[node name="StoneMason" type="Node2D" node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
+script = ExtResource("1_gupan")
 buildingSprite = NodePath("BuildingSprite")
 InteractArea = NodePath("InteractArea")
 CollisionArea = NodePath("CollisionArea")
-buildingName = "BaseBuilding"
 
 [node name="InteractArea" type="Area2D" parent="."]
 
@@ -20,7 +19,7 @@ polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 
 [node name="BuildingSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("2_2krsp")
+texture = ExtResource("2_bp105")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 

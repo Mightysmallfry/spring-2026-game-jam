@@ -60,12 +60,7 @@ func play_music(audioStream : AudioStream, duration : float = musicFadeDuration)
 func pause_music() -> void:
 	for player in musicPlayers:
 		fade_out(player)
-		
-func resume_music() -> void:
-	currentMusicPlayer = (currentMusicPlayer + 1) % musicPlayerCount
-	var player : AudioStreamPlayer = musicPlayers[currentMusicPlayer]
-	fade_in(player)
-	
+
 
 func fade_in(player : AudioStreamPlayer, fadeDuration : float = musicFadeDuration) -> void:
 	player.play()
