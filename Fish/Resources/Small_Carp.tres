@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" load_steps=3 format=3 uid="uid://83d0e5s6f85h"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_g005o"]
+[ext_resource type="Texture2D" uid="uid://dfmuyofgtfvve" path="res://Fish/Assets/Little Carp.png" id="2_4vcqx"]
+
+[resource]
+script = ExtResource("1_g005o")
+fishName = "Small Carp"
+fishRarity = 5
+texture = ExtResource("2_4vcqx")
+length = 0.007
+girth = 0.002
+weight = 0.001
+metadata/_custom_type_script = "uid://crt5mth27sk6e"
