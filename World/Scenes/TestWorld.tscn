@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://d4ej18lddgh28"]
+[gd_scene load_steps=9 format=4 uid="uid://d4ej18lddgh28"]
 
 [ext_resource type="Texture2D" uid="uid://bin3dgnlfbemi" path="res://Assets/TileMap/spritesheet.png" id="1_m0wvo"]
 [ext_resource type="Texture2D" uid="uid://bmffhuiifkld5" path="res://Assets/TileMap/isometric-sandbox-sheet.png" id="2_hu38b"]
 [ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="4_hk2vw"]
+[ext_resource type="PackedScene" uid="uid://c2wxjfcmnqb7a" path="res://Player/player.tscn" id="4_nwi3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hu38b"]
 texture = ExtResource("1_m0wvo")
@@ -185,7 +186,7 @@ tile_shape = 1
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_r2x8l")
 
-[node name="Node2D" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
 visible = false
@@ -207,3 +208,6 @@ tile_set = SubResource("TileSet_hk2vw")
 [node name="StoneMason" type="Sprite2D" parent="."]
 position = Vector2(30, 122)
 texture = ExtResource("4_hk2vw")
+
+[node name="Player" parent="." instance=ExtResource("4_nwi3h")]
+position = Vector2(40, 175)

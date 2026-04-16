@@ -13,12 +13,12 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_start_button_pressed() -> void:
-	# If we have audio for the main game we can remove this
+	# If we have audio for the main game we can remove thissd
 	# Since playing different audio will also fade out the current audio
 	Global.audio_manager.fade_out()
 	print("start pressed")
-	Global.game_manager.change_2d_scene("LevelOne")
-	Global.game_manager.change_gui_scene("PlayerGui")
+	Global.game_manager.change_2d_scene("res://World/Scenes/TestWorld.tscn")
+	Global.game_manager.change_gui_scene("res://Player/player_ui.tscn")
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

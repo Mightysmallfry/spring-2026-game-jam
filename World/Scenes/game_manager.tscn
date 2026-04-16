@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwqc0ptsjum4t"]
+[gd_scene load_steps=9 format=3 uid="uid://dwqc0ptsjum4t"]
 
 [ext_resource type="PackedScene" uid="uid://dmg5rqup1xtul" path="res://Menus/MainMenu/main_menu.tscn" id="1_nrqse"]
 [ext_resource type="Script" uid="uid://dtvrdv3ywspc3" path="res://World/game_manager.gd" id="1_sr2ya"]
 [ext_resource type="PackedScene" uid="uid://dhn62n0duqwk2" path="res://Managers/audio/audio_manager.tscn" id="2_76ckp"]
 [ext_resource type="PackedScene" uid="uid://cwbqtyscwba2t" path="res://Menus/Debug/debug_menu.tscn" id="2_oq6yk"]
+[ext_resource type="Shader" uid="uid://colse0vx0wnxl" path="res://Camera/SubpixelCanvas.gdshader" id="3_2a8qe"]
+[ext_resource type="Script" uid="uid://cb6ia7h0ogm0x" path="res://World/Scenes/game_viewport_manager.gd" id="4_maolr"]
 [ext_resource type="PackedScene" uid="uid://bgh2kvqqxyn6k" path="res://Managers/transition/transition_manager.tscn" id="5_ccgei"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_maolr"]
+shader = ExtResource("3_2a8qe")
+shader_parameter/cam_offset = Vector2(0, 0)
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_sr2ya")
@@ -14,6 +20,17 @@ script = ExtResource("1_sr2ya")
 [node name="World_3d" type="Node3D" parent="."]
 
 [node name="World_2d" type="Node2D" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="World_2d"]
+material = SubResource("ShaderMaterial_maolr")
+offset_right = 512.0
+offset_bottom = 512.0
+script = ExtResource("4_maolr")
+
+[node name="SubViewport" type="SubViewport" parent="World_2d/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(642, 482)
+render_target_update_mode = 4
 
 [node name="Gui" type="Control" parent="."]
 layout_mode = 3

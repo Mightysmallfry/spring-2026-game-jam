@@ -2,7 +2,7 @@ extends Node
 class_name GameManager
 
 @onready var world_3d : Node3D = $World_3d
-@onready var world_2d : Node2D = $World_2d
+@onready var world_2d : Node = $World_2d/SubViewportContainer/SubViewport
 @onready var gui : Control = $Gui
 
 var current_world_3d : Node3D
@@ -17,7 +17,6 @@ func _ready() -> void:
 	# current_world_3d = $World_3d/level_3
 	
 	current_gui = $Gui/MainMenu
-	# current_world_2d = $World_2d/
 
 func change_3d_scene(next_scene_path : String, delete : bool = true, keep_running : bool = false) -> void:
 	await Global.transition_manager.transition_fade_out()
