@@ -6,6 +6,7 @@ class_name BaseBuilding
 @export var CollisionArea : Area2D
 
 @export var buildingName : String
+@onready var popups : Node3D = $Popups
 
 var MAX_LEVEL : int = 9
 var INITIAL_LEVEL : int = 1
@@ -19,3 +20,10 @@ func _ready() -> void:
 
 func unlock() -> void:
 	isUnlocked = true
+
+
+func _on_interact_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+func _on_interact_area_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
