@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bgujjbqogtfu2"]
+
+[ext_resource type="Script" uid="uid://cca5hertpeo52" path="res://Managers/interaction/interaction_manager.gd" id="1_7s876"]
+
+[node name="InteractionManager" type="Node2D" unique_id=1317930666]
+script = ExtResource("1_7s876")
+
+[node name="InteractLabel" type="Label" parent="." unique_id=1323089308]
+custom_minimum_size = Vector2(120, 40)
+offset_right = 40.0
+offset_bottom = 23.0
+text = "[ F ] To Interact"
+horizontal_alignment = 1
+vertical_alignment = 1

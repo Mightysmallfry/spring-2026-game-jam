@@ -7,6 +7,7 @@ class_name BaseBuilding
 
 @export var buildingName : String
 
+
 var MAX_LEVEL : int = 9
 var INITIAL_LEVEL : int = 1
 var current_level : int = 1
@@ -21,7 +22,6 @@ func _ready() -> void:
 
 func unlock() -> void:
 	isUnlocked = true
-
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	print("Body entered")
