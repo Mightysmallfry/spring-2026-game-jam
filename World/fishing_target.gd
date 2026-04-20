@@ -1,45 +1,45 @@
 extends Sprite2D
 
+var _tween: Tween = null
+
 func _ready() -> void:
 	visible = false
+	var fishing_game = get_parent().get_parent()
+	if fishing_game == null:
+		push_error("Could not find FishingGame node!")
+		return
+	fishing_game.fish_caught.connect(_on_fishing_game_fish_caught)
 
-func _move(pattern : String) -> void:
-	
+func _move(fish: FishData) -> void:
+	# Kill any existing tween before making a new one
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+
 	var move_distance = 60.0
 	var move_time = 0.5
-	var t = create_tween()
-	
-	match pattern:
+
+	match fish.fishMoves:
 		"Easy":
 			move_time = 0.8
-		"Fake":
-			print("fakes out")
-		"Hilow":
-			print()
-		"Jumps":
-			print()
-		"Drops":
-			print()
 		"Bouncey":
 			move_distance = 40
 			move_time = 0.2
-			t.set_trans(Tween.TRANS_BOUNCE)
-			
+			_tween.set_trans(Tween.TRANS_BOUNCE)
+
 	var direction = [-1, 1].pick_random()
 	if (position.x + (direction * move_distance)) > 130.0:
 		direction = -1
-	elif (position.x + (direction * move_distance) < -130.0):
+	elif (position.x + (direction * move_distance)) < -130.0:
 		direction = 1
-		
-	var target_x = position.x + (direction * move_distance)
-	target_x = clamp(target_x, -130.0, 130.0)  # adjust to bar bounds
-	
-	
-	t.tween_property(self, "position:x", target_x, move_time)
-	t.tween_callback(_move.bind(pattern))  # loop by calling itself when done
 
+	var target_x = clamp(position.x + (direction * move_distance), -130.0, 130.0)
 
-func _on_fishing_game_fish_caught(pattern: String) -> void:
-	print("Signal Received! Pattern: ", pattern) # Add this to debug
+	_tween.tween_property(self, "position:x", target_x, move_time)
+	_tween.tween_callback(_move.bind(fish))
+
+func _on_fishing_game_fish_caught(fish: FishData) -> void:
+	print("Signal Received! Pattern: ", fish)
 	visible = true
-	_move(pattern)
+	print(fish.fishMoves)
+	_move(fish)

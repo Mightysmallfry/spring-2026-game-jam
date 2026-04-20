@@ -24,6 +24,7 @@ var _fish_pos: float = 0.5
 var _fish_vel: float = 0.0
 var _progress_val: float = 0.0
 var _fish_seed: float
+var _fishing_succeded := false
 
 func _on_target_area_2d_body_entered(body: Node2D) -> void:
 	print("ENTERED: ", body.name) # See what is hitting the fish [cite: 5]
@@ -37,9 +38,9 @@ func _on_target_area_2d_body_exited(body: Node2D) -> void:
 		fish_in_bar = false
 		print("LOGIC: FishBar ENTERED. fish_in_bar is now FALSE")
 
-signal fishing_finished(success : bool, fish : FishData)
+signal fishing_finished(success : bool)
 
-signal fish_caught(pattern : String) #the pattern is for the movement type from the fish
+signal fish_caught(fish : FishData) #the pattern is for the movement type from the fish
 
 signal start_catching()
 
@@ -53,10 +54,11 @@ func _ready():
 	if not fish:
 		push_warning("FishingMinigame requires passing in a fish to play")
 		return
+	
 func _physics_process(delta: float):
 	_elapsed += delta
 	_duration += delta
-	var failed := false
+	_fishing_succeded = false
 	
 	match _state :
 		STATE.CASTING:
@@ -70,7 +72,7 @@ func _physics_process(delta: float):
 			_hook_window -= delta * 1
 			if _hook_window <= 0.0:
 				_fail("Too slow")
-			else:#added
+			elif Input.is_action_just_pressed("fish"):
 				print("DEBUG: Player Pressed Hook Button") # 2. Is the input working?
 				_on_hook()
 		STATE.PLAY:
@@ -84,17 +86,15 @@ func _physics_process(delta: float):
 			%TextureProgressBar.value = _progress_val
 			if _progress_val >= 100:
 				_on_fish_caught()
+				_fishing_succeded = true
 				_state = STATE.END
 			elif _progress_val <= 0:
 				_on_fish_escaped()
+				_fishing_succeded = false
 				_state = STATE.END
 		STATE.END:
-			pass
+			_clean_fishing_minigame()
 			
-func _unhandled_input(event):
-	if _state == STATE.HOOK:
-		if event.is_action_pressed("ui_accept") or event.is_action_pressed("fish"):
-			_on_hook()
 
 func _hook_fish():
 	_state = STATE.HOOK
@@ -106,7 +106,7 @@ func _hook_fish():
 
 func _on_hook():
 	print("DEBUG: _on_hook activated")
-	fish_caught.emit(fish.fishMoves)
+	fish_caught.emit(fish)
 	_progress_val = 20.0 #so you dont insta fail
 	_time_stop(0.06)
 	_shake(6.0,0.18)
@@ -141,3 +141,6 @@ func _time_stop(seconds: float):
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(seconds,true,true,true).timeout
 	Engine.time_scale = 1.0
+	
+func _clean_fishing_minigame():
+	print("all claened up")
