@@ -1,27 +1,31 @@
 extends Node2D
+class_name InteractionManager
 
 @onready var interactionLabel = $InteractLabel
+
+@export var player : CharacterBody2D
 
 const TEXT : String = "[ F ] To Interact"
 
 # Keeps track of all areas we are on
-var activeAreas : Array = []
-
-# The area we are closest to and want to display
+var activeAreas = []
+# The area we are closest to and want to display?
 var focusedArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Global.interaction_manager = self
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Spin through player, checking the closest
+	# interact and making it the focus
 	pass
-
 
 func register_area(area : Area2D) -> void: 
 	activeAreas.push_back(area)
 
 func remove_area(area : Area2D) -> void:
-	var index : int = activeAreas.find(area)
-	activeAreas.remove_at(index)
+	activeAreas.remove(area)
+
+func closest_area(player : CharacterBody2D):
+	pass
