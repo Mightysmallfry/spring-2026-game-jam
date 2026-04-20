@@ -3,7 +3,7 @@ extends Node2D
 @onready var root_ui: Node2D = $UI_container
 @onready var catch_area: Sprite2D = $Fishing_bar_outside/Fishing_target
 
-@export var fish:FishData
+@export var fish : FishData
 var fish_in_bar = false
 
 const BASE_HOOK_WINDOW := 0.6
@@ -39,7 +39,7 @@ func _on_target_area_2d_body_exited(body: Node2D) -> void:
 
 signal fishing_finished(success : bool, fish : FishData)
 
-signal fish_caught(caught : bool, pattern : String) #the pattern is for the movement type from the fish
+signal fish_caught(pattern : String) #the pattern is for the movement type from the fish
 
 signal start_catching()
 
@@ -70,9 +70,9 @@ func _physics_process(delta: float):
 			_hook_window -= delta * 1
 			if _hook_window <= 0.0:
 				_fail("Too slow")
-				fish_caught.emit(false,fish.fishMoves)
 			else:#added
-				fish_caught.emit(true)
+				print("DEBUG: Player Pressed Hook Button") # 2. Is the input working?
+				_on_hook()
 		STATE.PLAY:
 			print(fish_in_bar)
 			start_catching.emit()
@@ -105,16 +105,12 @@ func _hook_fish():
 	#add hook sound effect
 
 func _on_hook():
-	_state = STATE.PLAY
-	# Check if the FishBar is already inside the area
-	var bodies = $Fishing_bar_outside/Fishing_target/TargetArea2D.get_overlapping_bodies()
-	for body in bodies:
-		if body.name == "FishBar":
-			fish_in_bar = true
-			break # We found it, no need to keep looking
+	print("DEBUG: _on_hook activated")
+	fish_caught.emit(fish.fishMoves)
 	_progress_val = 20.0 #so you dont insta fail
 	_time_stop(0.06)
 	_shake(6.0,0.18)
+	_state = STATE.PLAY
 
 func _fail(_why: String):
 	_state = STATE.END

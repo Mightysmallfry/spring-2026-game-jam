@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://World/fishing_minigame.gd" id="1_0kedh"]
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
+[ext_resource type="Resource" uid="uid://bb80jfgp3a12t" path="res://Fish/Resources/Carp.tres" id="2_md58f"]
 [ext_resource type="Texture2D" uid="uid://nawbcf1jh4cv" path="res://Assets/Patterns/Bars/Fish_target.png" id="2_qdkb4"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
 [ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/fishing_target.gd" id="4_spu5d"]
@@ -20,6 +21,7 @@ size = Vector2(80, 36)
 
 [node name="FishingGame" type="Node2D" unique_id=1407624943]
 script = ExtResource("1_0kedh")
+fish = ExtResource("2_md58f")
 
 [node name="UI_container" type="Node2D" parent="." unique_id=1749612361]
 
