@@ -25,32 +25,29 @@ var _fish_vel: float = 0.0
 var _progress_val: float = 0.0
 var _fish_seed: float
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	fish_in_bar = true
+func _on_target_area_2d_body_entered(body: Node2D) -> void:
+	print("ENTERED: ", body.name) # See what is hitting the fish [cite: 5]
+	if body.name == "FishBar":
+		fish_in_bar = true
+		print("LOGIC: FishBar ENTERED. fish_in_bar is now TRUE")
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	fish_in_bar = false
-	
+func _on_target_area_2d_body_exited(body: Node2D) -> void:
+	print("EXITED: ", body.name) # See if the bar ever actually "leaves" [cite: 5]
+	if body.name == "FishBar":
+		fish_in_bar = false
+		print("LOGIC: FishBar ENTERED. fish_in_bar is now FALSE")
+
 signal fishing_finished(success : bool, fish : FishData)
 
-func _on_timer_timeout() -> void:
-	if fish_in_bar:
-		%TextureProgressBar.value += 1
-	else:
-		%TextureProgressBar.value -= 1
+signal fish_caught(caught : bool, pattern : String) #the pattern is for the movement type from the fish
 
-	if %TextureProgressBar.value >= 100:
-		_on_fish_caught()
-	elif %TextureProgressBar.value <= 0:
-		_on_fish_escaped()
+signal start_catching()
 
-func _on_fish_caught() -> void:
+func _on_fish_caught() -> void: #these are debug currently
 	print("Fish caught!")
-	# Hide UI, emit signal, load next scene.
 
-func _on_fish_escaped() -> void:
+func _on_fish_escaped() -> void: #these are debug currently
 	print("Fish got away!")
-	# Hide UI, get nothing.
 	
 func _ready():
 	if not fish:
@@ -59,6 +56,7 @@ func _ready():
 func _physics_process(delta: float):
 	_elapsed += delta
 	_duration += delta
+	var failed := false
 	
 	match _state :
 		STATE.CASTING:
@@ -72,8 +70,24 @@ func _physics_process(delta: float):
 			_hook_window -= delta * 1
 			if _hook_window <= 0.0:
 				_fail("Too slow")
+				fish_caught.emit(false,fish.fishMoves)
+			else:#added
+				fish_caught.emit(true)
 		STATE.PLAY:
-			print("play")
+			print(fish_in_bar)
+			start_catching.emit()
+			if fish_in_bar:
+				_progress_val += BASE_PROGRESS_GAIN * delta
+			else:
+				_progress_val -= BASE_ESCAPE_DRAIN * delta
+			_progress_val = clamp(_progress_val,0.0,100.0)
+			%TextureProgressBar.value = _progress_val
+			if _progress_val >= 100:
+				_on_fish_caught()
+				_state = STATE.END
+			elif _progress_val <= 0:
+				_on_fish_escaped()
+				_state = STATE.END
 		STATE.END:
 			pass
 			
@@ -92,6 +106,12 @@ func _hook_fish():
 
 func _on_hook():
 	_state = STATE.PLAY
+	# Check if the FishBar is already inside the area
+	var bodies = $Fishing_bar_outside/Fishing_target/TargetArea2D.get_overlapping_bodies()
+	for body in bodies:
+		if body.name == "FishBar":
+			fish_in_bar = true
+			break # We found it, no need to keep looking
 	_progress_val = 20.0 #so you dont insta fail
 	_time_stop(0.06)
 	_shake(6.0,0.18)
