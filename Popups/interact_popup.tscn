@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgujjbqogtfu2"]
+[gd_scene format=3 uid="uid://bgujjbqogtfu2"]
 
 [ext_resource type="Script" uid="uid://c8ny5s03nldn8" path="res://Popups/interact_popup.gd" id="1_dkn56"]
 
-[node name="Popups" type="Control"]
+[node name="Popups" type="Control" unique_id=2120813192]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,13 +11,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dkn56")
 
-[node name="InteractPopup" type="PopupPanel" parent="."]
+[node name="InteractPopup" type="PopupPanel" parent="." unique_id=1032145059]
 oversampling_override = 1.0
 initial_position = 1
 size = Vector2i(240, 80)
 visible = true
 
-[node name="MarginContainer" type="MarginContainer" parent="InteractPopup"]
+[node name="MarginContainer" type="MarginContainer" parent="InteractPopup" unique_id=1930029268]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,7 +32,7 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="InteractLabel" type="RichTextLabel" parent="InteractPopup/MarginContainer"]
+[node name="InteractLabel" type="RichTextLabel" parent="InteractPopup/MarginContainer" unique_id=1812097935]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 text = "Prompt"

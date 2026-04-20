@@ -6,7 +6,6 @@ class_name BaseBuilding
 @export var CollisionArea : Area2D
 
 @export var buildingName : String
-@onready var popups : Node3D = $Popups
 
 var MAX_LEVEL : int = 9
 var INITIAL_LEVEL : int = 1
@@ -17,13 +16,15 @@ var isUnlocked : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Progression.register_building(self)
+	InteractArea.body_entered.connect(_on_interact_area_body_entered)
+	InteractArea.body_exited.connect(_on_interact_area_body_exited)
 
 func unlock() -> void:
 	isUnlocked = true
 
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	print("Body entered")
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	print("Body exited")

@@ -1,24 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck3rwt41c4r77"]
+[gd_scene format=3 uid="uid://ck3rwt41c4r77"]
 
 [ext_resource type="Script" uid="uid://dl4jt8bq2eexk" path="res://Buildings/fish_monger.gd" id="1_k2nvv"]
 [ext_resource type="Texture2D" uid="uid://snae560hfnx" path="res://Assets/Buildings/Fishmonger.png" id="2_k2nvv"]
 
-[node name="FishMonger" type="Node2D" node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
+[node name="FishMonger" type="Node2D" unique_id=927949800 node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
 script = ExtResource("1_k2nvv")
 buildingSprite = NodePath("BuildingSprite")
 InteractArea = NodePath("InteractArea")
 CollisionArea = NodePath("CollisionArea")
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="." unique_id=716169724]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea" unique_id=1251468839]
 polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 
-[node name="BuildingSprite" type="Sprite2D" parent="."]
+[node name="BuildingSprite" type="Sprite2D" parent="." unique_id=1976670613]
 y_sort_enabled = true
 texture = ExtResource("2_k2nvv")
 
-[node name="CollisionArea" type="Area2D" parent="."]
+[node name="CollisionArea" type="Area2D" parent="." unique_id=1028041641]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea" unique_id=1422957875]
 polygon = PackedVector2Array(5, 43, 38, 26, 12, 13, 19, 10, -3, -3, -11, 0, -44, 17, -19, 30)

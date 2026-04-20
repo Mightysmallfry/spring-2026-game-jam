@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2wxjfcmnqb7a"]
+[gd_scene format=3 uid="uid://c2wxjfcmnqb7a"]
 
 [ext_resource type="Script" uid="uid://dvaghuoqnf4g0" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://do2rhcmalsle1" path="res://Assets/Banner.png" id="2_btcbx"]
@@ -7,15 +7,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwnis"]
 radius = 8.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=2086189498]
 script = ExtResource("1_4ntmi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=44524094]
 shape = SubResource("CircleShape2D_gwnis")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=401201698]
 scale = Vector2(0.20833333, 0.21875)
 texture = ExtResource("2_btcbx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=721699710]
 script = ExtResource("3_btcbx")

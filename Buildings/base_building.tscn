@@ -1,42 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2mj4hho2h3yd"]
+[gd_scene format=3 uid="uid://c2mj4hho2h3yd"]
 
 [ext_resource type="Script" uid="uid://d3yuag0il3d3r" path="res://Buildings/base_building.gd" id="1_fpopy"]
 [ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_2krsp"]
-[ext_resource type="PackedScene" uid="uid://bgujjbqogtfu2" path="res://Popups/interact_popup.tscn" id="3_2krsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpopy"]
 radius = 8.0
 
-[node name="BaseBuilding" type="Node2D" node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
+[node name="BaseBuilding" type="Node2D" unique_id=701582952 node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
 script = ExtResource("1_fpopy")
 buildingSprite = NodePath("BuildingSprite")
 InteractArea = NodePath("InteractArea")
 CollisionArea = NodePath("CollisionArea")
 buildingName = "BaseBuilding"
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="." unique_id=795196093]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea" unique_id=641215218]
 polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 
-[node name="BuildingSprite" type="Sprite2D" parent="."]
+[node name="BuildingSprite" type="Sprite2D" parent="." unique_id=1153005556]
 y_sort_enabled = true
 texture = ExtResource("2_2krsp")
 
-[node name="CollisionArea" type="Area2D" parent="."]
+[node name="CollisionArea" type="Area2D" parent="." unique_id=422125090]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea" unique_id=1765308347]
 polygon = PackedVector2Array(-32, 32, 0, 15, 24, 28, 41, 19, 0, -2, -49, 23)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=1935989875]
 position = Vector2(0, 34)
 shape = SubResource("CircleShape2D_fpopy")
-
-[node name="Popups" parent="." instance=ExtResource("3_2krsp")]
-offset_left = 449.99994
-offset_top = 258.75317
-offset_right = 449.99994
-offset_bottom = 258.75317
-
-[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
-[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
