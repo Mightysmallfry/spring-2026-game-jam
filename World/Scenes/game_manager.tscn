@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwqc0ptsjum4t"]
+[gd_scene format=3 uid="uid://dwqc0ptsjum4t"]
 
 [ext_resource type="PackedScene" uid="uid://dmg5rqup1xtul" path="res://Menus/MainMenu/main_menu.tscn" id="1_nrqse"]
 [ext_resource type="Script" uid="uid://dtvrdv3ywspc3" path="res://World/game_manager.gd" id="1_sr2ya"]
@@ -12,27 +12,27 @@
 shader = ExtResource("3_2a8qe")
 shader_parameter/cam_offset = Vector2(0, 0)
 
-[node name="GameManager" type="Node"]
+[node name="GameManager" type="Node" unique_id=371977570]
 script = ExtResource("1_sr2ya")
 
-[node name="AudioManager" parent="." instance=ExtResource("2_76ckp")]
+[node name="AudioManager" parent="." unique_id=461369637 instance=ExtResource("2_76ckp")]
 
-[node name="World_3d" type="Node3D" parent="."]
+[node name="World_3d" type="Node3D" parent="." unique_id=610099931]
 
-[node name="World_2d" type="Node2D" parent="."]
+[node name="World_2d" type="Node2D" parent="." unique_id=988812913]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="World_2d"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="World_2d" unique_id=1844830141]
 material = SubResource("ShaderMaterial_maolr")
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("4_maolr")
 
-[node name="SubViewport" type="SubViewport" parent="World_2d/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="World_2d/SubViewportContainer" unique_id=2013752168]
 handle_input_locally = false
 size = Vector2i(642, 482)
 render_target_update_mode = 4
 
-[node name="Gui" type="Control" parent="."]
+[node name="Gui" type="Control" parent="." unique_id=1443388856]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,15 +40,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" parent="Gui" instance=ExtResource("1_nrqse")]
+[node name="MainMenu" parent="Gui" unique_id=1493305672 instance=ExtResource("1_nrqse")]
 layout_mode = 1
 
-[node name="TransitionManager" parent="." instance=ExtResource("5_ccgei")]
+[node name="TransitionManager" parent="." unique_id=1056860372 instance=ExtResource("5_ccgei")]
 
-[node name="DebugLayer" type="CanvasLayer" parent="."]
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=374288400]
 layer = 11
 
-[node name="DebugMenu" parent="DebugLayer" instance=ExtResource("2_oq6yk")]
+[node name="DebugMenu" parent="DebugLayer" unique_id=937916825 instance=ExtResource("2_oq6yk")]
 visible = false
 offset_right = 360.0
 offset_bottom = 120.0

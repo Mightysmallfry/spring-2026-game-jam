@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpopy"]
 radius = 8.0
 
-[node name="BaseBuilding" type="Node2D" unique_id=701582952 node_paths=PackedStringArray("buildingSprite", "InteractArea", "CollisionArea")]
+[node name="BaseBuilding" type="Node2D" unique_id=701582952 node_paths=PackedStringArray("buildingSprite", "interactArea", "collisionArea")]
 script = ExtResource("1_fpopy")
 buildingSprite = NodePath("BuildingSprite")
-InteractArea = NodePath("InteractArea")
-CollisionArea = NodePath("CollisionArea")
+interactArea = NodePath("InteractArea")
+collisionArea = NodePath("CollisionArea")
 buildingName = "BaseBuilding"
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=795196093]

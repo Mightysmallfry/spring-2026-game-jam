@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmg5rqup1xtul"]
+[gd_scene format=3 uid="uid://dmg5rqup1xtul"]
 
 [ext_resource type="Texture2D" uid="uid://bdl1tdky08ub7" path="res://Assets/Patterns/PatternA.png" id="1_3e31c"]
 [ext_resource type="Script" uid="uid://cxgmoqr3oed81" path="res://Menus/MainMenu/main_menu.gd" id="1_qq57v"]
@@ -10,7 +10,7 @@
 shader = ExtResource("1_wotb1")
 shader_parameter/SPEED = 0.5
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1285941231]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ script = ExtResource("1_qq57v")
 mainMenuMusic = ExtResource("2_y4ryc")
 CreditsMusic = ExtResource("3_7f67a")
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=615682729]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21957067, 0.42088038, 0.648827, 1)
 
-[node name="BackgroundPattern" type="TextureRect" parent="."]
+[node name="BackgroundPattern" type="TextureRect" parent="." unique_id=1913307116]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_qq57v")
 layout_mode = 1
@@ -46,26 +46,26 @@ grow_vertical = 2
 texture = ExtResource("1_3e31c")
 stretch_mode = 1
 
-[node name="TitleBackground" type="PanelContainer" parent="."]
+[node name="TitleBackground" type="PanelContainer" parent="." unique_id=320636827]
 layout_mode = 1
 offset_left = 31.0
 offset_top = 38.0
 offset_right = 310.0
 offset_bottom = 106.0
 
-[node name="TitleContainer" type="MarginContainer" parent="TitleBackground"]
+[node name="TitleContainer" type="MarginContainer" parent="TitleBackground" unique_id=2031055351]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="GameTitle" type="RichTextLabel" parent="TitleBackground/TitleContainer"]
+[node name="GameTitle" type="RichTextLabel" parent="TitleBackground/TitleContainer" unique_id=450939078]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 36
 text = "Fishin' Fealty"
 
-[node name="ButtonContainer" type="MarginContainer" parent="."]
+[node name="ButtonContainer" type="MarginContainer" parent="." unique_id=17416427]
 custom_minimum_size = Vector2(120, 180)
 layout_mode = 1
 anchors_preset = 2
@@ -81,27 +81,27 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ButtonVList" type="VBoxContainer" parent="ButtonContainer"]
+[node name="ButtonVList" type="VBoxContainer" parent="ButtonContainer" unique_id=162455461]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="ButtonContainer/ButtonVList"]
+[node name="StartButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=1631488980]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Start Game"
 
-[node name="SettingsButton" type="Button" parent="ButtonContainer/ButtonVList"]
+[node name="SettingsButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=869813819]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Settings
 "
 
-[node name="CreditsButton" type="Button" parent="ButtonContainer/ButtonVList"]
+[node name="CreditsButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=1703001226]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Credits
 "
 
-[node name="QuitButton" type="Button" parent="ButtonContainer/ButtonVList"]
+[node name="QuitButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=119089275]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"

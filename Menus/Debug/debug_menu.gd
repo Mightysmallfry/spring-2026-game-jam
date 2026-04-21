@@ -49,5 +49,8 @@ func add_property(title : String, value, order):
 		target.text = target.name + " : " + str(value)
 	elif visible: 
 		target.text = title + " : " + str(value)
-		DebugProperties.move_child(target, order)
+		if (order >= DebugProperties.get_child_count()):
+			DebugProperties.move_child(target, -1)
+		else:
+			DebugProperties.move_child(target, order)
 		
