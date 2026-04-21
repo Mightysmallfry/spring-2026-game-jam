@@ -10,21 +10,26 @@ func _ready() -> void:
 	fish_upper_bound = position.x + 130
 	fish_lower_bound = position.x - 130
 
+var is_moving = false
+
 func _move(fish: FishData) -> void:
 	# Kill any existing tween before making a new one
-
+	var move_distance = 60.0
+	var move_time : float = 0.5
+	if is_moving: return
+	is_moving = true
 	if _tween:
 		_tween.kill()
 	_tween = create_tween()
-	var move_distance = 60.0
-	var move_time = 0.5
+
 
 	match fish.fishMoves:
 		"Easy":
-			move_time = 0.8
+			move_time = 0.9
 		"Bouncey":
 			move_distance = 40
-			move_time = 0.2
+			move_time = 0.5
+			print(move_time)
 			_tween.set_trans(Tween.TRANS_BOUNCE)
 
 	var direction = [-1, 1].pick_random()
@@ -36,6 +41,7 @@ func _move(fish: FishData) -> void:
 	var target_x = clamp(position.x + (direction * move_distance), fish_lower_bound, fish_upper_bound)
 
 	_tween.tween_property(self, "position:x", target_x, move_time)
+	_tween.tween_callback(func(): is_moving = false)
 	_tween.tween_callback(_move.bind(fish))
 
 func _on_fishing_game_fish_caught(fish: FishData) -> void:

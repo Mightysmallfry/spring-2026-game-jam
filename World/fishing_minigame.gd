@@ -42,8 +42,6 @@ signal fishing_finished(success : bool)
 
 signal fish_caught(fish : FishData) #the pattern is for the movement type from the fish
 
-signal start_catching()
-
 func _on_fish_caught() -> void: #these are debug currently
 	print("Fish caught!")
 
@@ -54,11 +52,11 @@ func _ready():
 	if not fish:
 		push_warning("FishingMinigame requires passing in a fish to play")
 		return
+	$Difficulty_manager.dificulty = fish.fishRarity
 	
 func _physics_process(delta: float):
 	_elapsed += delta
 	_duration += delta
-	_fishing_succeded = false
 	
 	match _state :
 		STATE.CASTING:
@@ -77,11 +75,11 @@ func _physics_process(delta: float):
 				_on_hook()
 		STATE.PLAY:
 			print(fish_in_bar)
-			start_catching.emit()
 			if fish_in_bar:
 				_progress_val += BASE_PROGRESS_GAIN * delta
 			else:
 				_progress_val -= BASE_ESCAPE_DRAIN * delta
+			#upgrade_bar_color
 			_progress_val = clamp(_progress_val,0.0,100.0)
 			%TextureProgressBar.value = _progress_val
 			if _progress_val >= 100:
@@ -103,6 +101,11 @@ func _hook_fish():
 	_flashbang(catch_area, 0.12)
 	_engorge_ui(root_ui, 1.05,0.08)
 	#add hook sound effect
+	
+func take_damage():
+	_progress_val -= 15
+	_progress_val = clamp(_progress_val,0,100)
+	%TextureProgressBar.value = _progress_val
 
 func _on_hook():
 	print("DEBUG: _on_hook activated")

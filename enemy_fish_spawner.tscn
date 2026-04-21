@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ul3l6r7y4w77"]
+
+[ext_resource type="Script" uid="uid://dxk00poqlu7tl" path="res://World/enemy_fish_spawner.gd" id="1_gxe4s"]
+
+[node name="Marker2D" type="Marker2D" unique_id=1097619320]
+script = ExtResource("1_gxe4s")
+
+[node name="Timer" type="Timer" parent="." unique_id=377516179]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
