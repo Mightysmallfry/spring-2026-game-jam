@@ -142,5 +142,5 @@ func _time_stop(seconds: float):
 	await get_tree().create_timer(seconds,true,true,true).timeout
 	Engine.time_scale = 1.0
 	
-func _clean_fishing_minigame():
+func _clean_fishing_minigame():#TODO
 	print("all claened up")

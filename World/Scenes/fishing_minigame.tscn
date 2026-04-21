@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://World/fishing_minigame.gd" id="1_0kedh"]
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
-[ext_resource type="Resource" uid="uid://bb80jfgp3a12t" path="res://Fish/Resources/Carp.tres" id="2_md58f"]
 [ext_resource type="Texture2D" uid="uid://nawbcf1jh4cv" path="res://Assets/Patterns/Bars/Fish_target.png" id="2_qdkb4"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
 [ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/fishing_target.gd" id="4_spu5d"]
@@ -10,18 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3fb"]
-size = Vector2(16, 6)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i7cv"]
 size = Vector2(308, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spu5d"]
 size = Vector2(80, 36)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3fb"]
+size = Vector2(16, 6)
+
 [node name="FishingGame" type="Node2D" unique_id=1407624943]
 script = ExtResource("1_0kedh")
-fish = ExtResource("2_md58f")
 
 [node name="UI_container" type="Node2D" parent="." unique_id=1749612361]
 
@@ -38,6 +36,7 @@ scale = Vector2(4, 4)
 fill_mode = 4
 texture_under = ExtResource("6_spu5d")
 texture_progress = ExtResource("7_md58f")
+metadata/_edit_use_anchors_ = true
 
 [node name="Fishing_bar_outside" type="Sprite2D" parent="." unique_id=1160197251]
 position = Vector2(0, -6)
@@ -50,20 +49,6 @@ node_a = NodePath("../StaticBody2D")
 node_b = NodePath("../FishBar")
 length = 273.0
 initial_offset = 152.0
-
-[node name="Fishing_target" type="Sprite2D" parent="Fishing_bar_outside" unique_id=243370854]
-top_level = true
-position = Vector2(10, -4)
-texture = ExtResource("2_qdkb4")
-script = ExtResource("4_spu5d")
-
-[node name="TargetArea2D" type="Area2D" parent="Fishing_bar_outside/Fishing_target" unique_id=49552106]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishing_bar_outside/Fishing_target/TargetArea2D" unique_id=1816886236]
-position = Vector2(-10, 35)
-shape = SubResource("RectangleShape2D_di3fb")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Fishing_bar_outside" unique_id=343698052]
 collision_mask = 0
@@ -83,11 +68,20 @@ shape = SubResource("RectangleShape2D_spu5d")
 [node name="FishBarSprite" type="Sprite2D" parent="Fishing_bar_outside/FishBar" unique_id=844330997]
 texture = ExtResource("3_qdkb4")
 
-[node name="Timer" type="Timer" parent="." unique_id=474081645]
-wait_time = 0.05
-autostart = true
+[node name="Fishing_target" type="Sprite2D" parent="Fishing_bar_outside" unique_id=243370854]
+top_level = true
+position = Vector2(10, -4)
+texture = ExtResource("2_qdkb4")
+script = ExtResource("4_spu5d")
+
+[node name="TargetArea2D" type="Area2D" parent="Fishing_bar_outside/Fishing_target" unique_id=49552106]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishing_bar_outside/Fishing_target/TargetArea2D" unique_id=1816886236]
+position = Vector2(-10, 35)
+shape = SubResource("RectangleShape2D_di3fb")
 
 [connection signal="fish_caught" from="." to="Fishing_bar_outside/Fishing_target" method="_on_fishing_game_fish_caught"]
 [connection signal="body_entered" from="Fishing_bar_outside/Fishing_target/TargetArea2D" to="." method="_on_target_area_2d_body_entered"]
 [connection signal="body_exited" from="Fishing_bar_outside/Fishing_target/TargetArea2D" to="." method="_on_target_area_2d_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
