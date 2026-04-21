@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bdbo2gsubvc8l"]
+
+[ext_resource type="Script" uid="uid://chhhqq70w1tmp" path="res://Menus/Pause/pause_menu.gd" id="1_4ioa3"]
+[ext_resource type="Texture2D" uid="uid://dca83k6404e2e" path="res://Assets/NineMenu.png" id="1_nfgic"]
+
+[node name="PauseMenu" type="Control" unique_id=1632956484]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4ioa3")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1097438627]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -105.5
+offset_right = 109.0
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nfgic")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=311981483]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer" unique_id=1621203809]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=203753115]
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer" unique_id=583992851]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

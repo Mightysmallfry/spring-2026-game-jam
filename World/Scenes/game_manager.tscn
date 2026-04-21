@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://colse0vx0wnxl" path="res://Camera/SubpixelCanvas.gdshader" id="3_2a8qe"]
 [ext_resource type="Script" uid="uid://cb6ia7h0ogm0x" path="res://World/game_viewport_manager.gd" id="4_maolr"]
 [ext_resource type="PackedScene" uid="uid://bgh2kvqqxyn6k" path="res://Managers/transition/transition_manager.tscn" id="5_ccgei"]
+[ext_resource type="PackedScene" uid="uid://bdbo2gsubvc8l" path="res://Menus/Pause/pause_menu.tscn" id="6_ap7kh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_maolr"]
 shader = ExtResource("3_2a8qe")
@@ -39,8 +40,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="MainMenu" parent="Gui" unique_id=1493305672 instance=ExtResource("1_nrqse")]
+layout_mode = 1
+offset_left = 0.0
+offset_right = 0.0
+mouse_filter = 1
+
+[node name="PauseMenu" parent="Gui" unique_id=1632956484 instance=ExtResource("6_ap7kh")]
+process_mode = 3
+visible = false
 layout_mode = 1
 
 [node name="TransitionManager" parent="." unique_id=1056860372 instance=ExtResource("5_ccgei")]

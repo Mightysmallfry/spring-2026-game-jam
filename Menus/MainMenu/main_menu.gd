@@ -13,8 +13,8 @@ func _on_start_button_pressed() -> void:
 	# Since playing different audio will also fade out the current audio
 	Global.audio_manager.fade_out()
 	print("start pressed")
-	Global.game_manager.change_2d_scene("res://World/Scenes/TestWorld.tscn")
-	Global.game_manager.change_gui_scene("res://Player/player_ui.tscn")
+	await Global.game_manager.change_2d_scene("res://World/Scenes/TestWorld.tscn")
+	queue_free()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
@@ -22,7 +22,7 @@ func _on_quit_button_pressed() -> void:
 func _on_settings_button_pressed() -> void:
 	
 	#TODO: Something is wrong with changing scene, beware the debug menu
-	Global.game_manager.change_gui_scene("res://Menus/Settings/settings_menu.tscn", false, false)
+	Global.game_manager.change_gui_scene("res://Menus/Settings/settings_menu.tscn", true, false)
 
 
 func _on_credits_button_pressed() -> void:
