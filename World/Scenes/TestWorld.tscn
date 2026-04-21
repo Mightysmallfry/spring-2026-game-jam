@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://d4ej18lddgh28"]
 
+[ext_resource type="Script" uid="uid://ob3ajma37p6o" path="res://World/Levels/test_world.gd" id="1_cp43d"]
+[ext_resource type="AudioStream" uid="uid://dlf6yq3ruqdjd" path="res://Audio/music/delon_boomkin-electro-music-intro-new-2-410109.mp3" id="2_c4p2q"]
 [ext_resource type="Texture2D" uid="uid://bmffhuiifkld5" path="res://Assets/TileMap/isometric-sandbox-sheet.png" id="2_hu38b"]
 [ext_resource type="PackedScene" uid="uid://d03ssxqokrv1x" path="res://Buildings/StoneMason.tscn" id="3_hk2vw"]
 [ext_resource type="PackedScene" uid="uid://ck3rwt41c4r77" path="res://Buildings/FishMonger.tscn" id="4_jsrvb"]
@@ -66,6 +68,8 @@ tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_r2x8l")
 
 [node name="Level1" type="Node2D" unique_id=90806442]
+script = ExtResource("1_cp43d")
+levelOneMusic = ExtResource("2_c4p2q")
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=2077007187]
 
