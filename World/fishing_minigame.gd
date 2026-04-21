@@ -146,4 +146,5 @@ func _time_stop(seconds: float):
 	Engine.time_scale = 1.0
 	
 func _clean_fishing_minigame():#TODO
+	$Difficulty_manager.stop_spawners()
 	print("all claened up")

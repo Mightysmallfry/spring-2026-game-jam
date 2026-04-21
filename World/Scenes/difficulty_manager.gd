@@ -54,15 +54,20 @@ func _choose_random_spawners():
 			inactive_spawners.erase(chosen)
 			active_spawners.append(chosen)
 
-func _start_spawners():
+func start_spawners():
 	_choose_random_spawners()
 	for i in active_spawners:
 		var spawner = spawners[i]
 		spawner.spawn_speed = spawn_time
 		spawner.enemy_speed = enemy_fish_speed
 		spawner.start_spawning()
-		
+
+func stop_spawners():
+	for i in active_spawners:
+		var spawner = spawners[i]
+		spawner.stop_spawning()
+
 
 func _on_fishing_game_fish_caught(fish: FishData) -> void:
 	_set_difficualty(fish.fishRarity)
-	_start_spawners()
+	start_spawners()

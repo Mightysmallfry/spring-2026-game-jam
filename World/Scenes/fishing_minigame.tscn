@@ -21,7 +21,7 @@ size = Vector2(80, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_di3fb"]
 size = Vector2(16, 6)
 
-[node name="FishingGame" type="Node2D" unique_id=1407624943]
+[node name="FishingGame" type="Node2D" unique_id=1407624943 groups=["GameManager"]]
 position = Vector2(200, 200)
 script = ExtResource("1_0kedh")
 fish = ExtResource("2_c43qd")
