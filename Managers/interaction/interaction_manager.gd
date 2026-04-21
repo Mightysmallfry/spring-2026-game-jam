@@ -16,6 +16,7 @@ var canInteract : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.interaction_manager = self
+	interactionLabel.visible = false
 
 func _process(delta: float) -> void:
 	if !activeInteractions.is_empty():
@@ -34,7 +35,6 @@ func _process(delta: float) -> void:
 	if (canInteract && Input.is_action_just_pressed("interact")):
 		print("interacted with " + focusedInteraction.get_parent().name)
 
-
 func register_interaction(area : Area2D) -> void: 
 	activeInteractions.append(area)
 
@@ -42,12 +42,13 @@ func remove_interaction(area : Area2D) -> void:
 	activeInteractions.erase(area)
 	
 func sort_by_distance_from_player(interactionA, interactionB) -> bool:
-	var AToPlayer = player.global_position.distance_squared_to(interactionA.areaPosition)
-	var BToPlayer = player.global_position.distance_squared_to(interactionB.areaPosition)
+	var AToPlayer = player.global_position.distance_squared_to(interactionA.global_position)
+	var BToPlayer = player.global_position.distance_squared_to(interactionB.global_position)
 	return AToPlayer < BToPlayer
 	
 func adjust_focused_interaction() -> void:
 	# How do I want to store the text?
 	interactionLabel.text = BASE_TEXT
 	interactionLabel.global_position = focusedInteraction.global_position
+	interactionLabel.global_position.y -= 80
 	interactionLabel.global_position.x -= interactionLabel.size.x/2

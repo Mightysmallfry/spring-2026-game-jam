@@ -57,6 +57,7 @@ func play_music(audioStream : AudioStream, duration : float = musicFadeDuration)
 	fade_in(currentPlayer, duration)
 	fade_out(oldPlayer)
 
+
 func pause_music() -> void:
 	for player in musicPlayers:
 		fade_out(player)
@@ -80,4 +81,3 @@ func play_sfx(audioStream : AudioStream) -> void:
 	currentSfx.stream = audioStream
 	currentSfx.play()
 	
-	pass

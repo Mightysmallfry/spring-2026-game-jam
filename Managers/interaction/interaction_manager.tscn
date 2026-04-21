@@ -6,9 +6,11 @@
 script = ExtResource("1_7s876")
 
 [node name="InteractLabel" type="Label" parent="." unique_id=1323089308]
+visible = false
+z_index = 2
 custom_minimum_size = Vector2(120, 40)
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 120.0
+offset_bottom = 40.0
 text = "[ F ] To Interact"
 horizontal_alignment = 1
 vertical_alignment = 1

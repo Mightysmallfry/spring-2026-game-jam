@@ -3,7 +3,7 @@ class_name BaseBuilding
 
 @export var buildingSprite : Sprite2D
 @export var interactArea : Area2D
-@export var collisionArea : Area2D
+@export var collisionArea : StaticBody2D
 
 @export var buildingName : String
 

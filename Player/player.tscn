@@ -4,18 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://do2rhcmalsle1" path="res://Assets/Banner.png" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://bn04quaxpny55" path="res://Camera/SubpixelFollowCamera.gd" id="3_btcbx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gwnis"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]
 radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=2086189498]
+y_sort_enabled = true
+collision_layer = 3
 script = ExtResource("1_4ntmi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=44524094]
-shape = SubResource("CircleShape2D_gwnis")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=401201698]
+y_sort_enabled = true
+position = Vector2(0, -10)
 scale = Vector2(0.20833333, 0.21875)
 texture = ExtResource("2_btcbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=44524094]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_btcbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=721699710]
 script = ExtResource("3_btcbx")

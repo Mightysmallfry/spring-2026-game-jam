@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_2krsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpopy"]
-radius = 8.0
+radius = 13.038404
 
 [node name="BaseBuilding" type="Node2D" unique_id=701582952 node_paths=PackedStringArray("buildingSprite", "interactArea", "collisionArea")]
+y_sort_enabled = true
 script = ExtResource("1_fpopy")
 buildingSprite = NodePath("BuildingSprite")
 interactArea = NodePath("InteractArea")
@@ -14,15 +15,20 @@ collisionArea = NodePath("CollisionArea")
 buildingName = "BaseBuilding"
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=795196093]
+position = Vector2(0, -30)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea" unique_id=641215218]
 polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 
 [node name="BuildingSprite" type="Sprite2D" parent="." unique_id=1153005556]
 y_sort_enabled = true
+position = Vector2(0, -30)
 texture = ExtResource("2_2krsp")
 
-[node name="CollisionArea" type="Area2D" parent="." unique_id=422125090]
+[node name="CollisionArea" type="StaticBody2D" parent="." unique_id=2038401549]
+position = Vector2(0, -30)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea" unique_id=1765308347]
 polygon = PackedVector2Array(-32, 32, 0, 15, 24, 28, 41, 19, 0, -2, -49, 23)
