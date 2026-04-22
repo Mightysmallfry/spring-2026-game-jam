@@ -7,8 +7,8 @@ extends Node2D
 var fish_in_bar = false
 
 const BASE_HOOK_WINDOW := 0.6
-const BASE_ESCAPE_DRAIN := 22.0
-const BASE_PROGRESS_GAIN := 28.0
+const BASE_ESCAPE_DRAIN := 10.0
+const BASE_PROGRESS_GAIN := 10.0
 const DURATION := 5.0
 enum STATE { CASTING, BITE, HOOK, PLAY, END}
 
@@ -110,7 +110,7 @@ func take_damage():
 func _on_hook():
 	print("DEBUG: _on_hook activated")
 	fish_caught.emit(fish)
-	_progress_val = 20.0 #so you dont insta fail
+	_progress_val = 15.0 #so you dont insta fail
 	_time_stop(0.06)
 	_shake(6.0,0.18)
 	_state = STATE.PLAY
