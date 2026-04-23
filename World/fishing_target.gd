@@ -29,22 +29,22 @@ func _move(fish: FishData) -> void:
 
 
 	match fish.fishMoves:
-		5: #EASY
+		Enums.FishMoves.EASY: #EASY
 			rand_dir = true
 			move_time = 0.8 * speed_multiplier
-		0: #BOUNCEY
+		Enums.FishMoves.BOUNCY: #BOUNCEY
 			rand_dir = true
 			move_distance = 120
 			move_time = 1.5 * speed_multiplier
 			_tween.set_trans(Tween.TRANS_BOUNCE)
 			_tween.set_ease(Tween.EASE_OUT)
-		3: #HILOW
+		Enums.FishMoves.HILOW: #HILOW
 			rand_dir = false
 			target_x = fish_upper_bound if position.x < (fish_lower_bound + fish_upper_bound) / 2 else fish_lower_bound
 			_tween.tween_property(self,"position:x",target_x,1.0 * speed_multiplier).set_trans(Tween.TRANS_SPRING)
 			_tween.tween_interval(1.0) # sticks on the end for a moment
 
-		2: #JUMPS
+		Enums.FishMoves.JUMPS: #JUMPS
 			rand_dir = false
 			if move_counter % 3 == 0 or move_counter % 3 == 1:
 				target_x = fish_lower_bound + randi_range(0,20)
@@ -56,7 +56,7 @@ func _move(fish: FishData) -> void:
 				_tween.tween_property(self,"position:x",recovery_target,1.0 * speed_multiplier).set_trans(Tween.TRANS_SINE)
 			move_counter +=1
 			
-		1: #DROPS
+		Enums.FishMoves.DROPS: #DROPS
 			#go up close to the top then drop then go back up then drop then repete
 			rand_dir = false
 			if move_counter % 3 == 0 or move_counter % 3 == 1:
@@ -70,7 +70,7 @@ func _move(fish: FishData) -> void:
 				_tween.tween_property(self,"position:x",recovery_target,1.0 * speed_multiplier).set_trans(Tween.TRANS_SINE)
 			move_counter +=1
 			
-		4: #FAKE
+		Enums.FishMoves.FAKE: #FAKE
 			var dash_right = position.x < (fish_lower_bound + fish_upper_bound) / 2
 			var real_target = fish_upper_bound + randi_range(-90,0) if dash_right else fish_lower_bound + randi_range(0,90)
 			var fake_direction = -1 if dash_right else 1
@@ -107,7 +107,6 @@ func _move(fish: FishData) -> void:
 		target_x = clamp(position.x + (direction * move_distance), fish_lower_bound, fish_upper_bound)
 		_tween.tween_property(self, "position:x", target_x, move_time)
 
-	
 	_tween.tween_callback(func(): is_moving = false)
 	_tween.tween_callback(_move.bind(fish))
 

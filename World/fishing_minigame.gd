@@ -21,16 +21,12 @@ var _progress_val: float = 0.0
 var _fishing_succeded := false
 
 func _on_target_area_2d_body_entered(body: Node2D) -> void:
-	print("ENTERED: ", body.name) # See what is hitting the fish [cite: 5]
 	if body.name == "FishBar":
 		fish_in_bar = true
-		print("LOGIC: FishBar ENTERED. fish_in_bar is now TRUE")
 
 func _on_target_area_2d_body_exited(body: Node2D) -> void:
-	print("EXITED: ", body.name) # See if the bar ever actually "leaves" [cite: 5]
 	if body.name == "FishBar":
 		fish_in_bar = false
-		print("LOGIC: FishBar ENTERED. fish_in_bar is now FALSE")
 
 signal fishing_finished(success : bool)
 
@@ -70,7 +66,6 @@ func _physics_process(delta: float):
 				$UI_container/Hook.visible = false
 				_on_hook()
 		STATE.PLAY:
-			print(fish_in_bar)
 			if fish_in_bar:
 				_progress_val += BASE_PROGRESS_GAIN * delta
 			else:
@@ -115,7 +110,6 @@ func _physics_process(delta: float):
 func _hook_fish():
 	_state = STATE.HOOK
 	_hook_window = BASE_HOOK_WINDOW * 1 #replace hook window with rod hook window mult
-	
 	_flashbang(catch_area, 0.12)
 	_engorge_ui(root_ui, 1.05,0.08)
 	#add hook sound effect
@@ -126,7 +120,6 @@ func take_damage():
 	%TextureProgressBar.value = _progress_val
 
 func _on_hook():
-	print("DEBUG: _on_hook activated")
 	fish_caught.emit(fish)
 	_progress_val = 15.0 #so you dont insta fail
 	_time_stop(0.06)
@@ -171,7 +164,6 @@ func _clean_fishing_minigame():
 	$Difficulty_manager.stop_spawners()
 	$Fishing_bar_outside.visible = false
 	$UI_container/TextureProgressBar.visible = false
-	
 	
 func _display_fish():
 	var fishSprite = $UI_container/PotentialFish
