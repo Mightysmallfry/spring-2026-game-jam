@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 300.0
-
+@export var speed: float = 700.0
 # Set these to match your GrooveJoint2D bounds (length 304, so roughly ±130)
 @export var min_x: float = -106.0
 @export var max_x: float = 122.0

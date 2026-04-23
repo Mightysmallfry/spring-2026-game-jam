@@ -7,23 +7,17 @@ extends Node2D
 var fish_in_bar = false
 
 const BASE_HOOK_WINDOW := 0.6
-const BASE_ESCAPE_DRAIN := 10.0
-const BASE_PROGRESS_GAIN := 10.0
+const BASE_ESCAPE_DRAIN := 20.0
+const BASE_PROGRESS_GAIN := 21.0
 const DURATION := 5.0
-enum STATE { CASTING, BITE, HOOK, PLAY, END}
+enum STATE { CASTING, BITE, HOOK, PLAY, END, RESULTS}
 
 var _state: STATE = STATE.CASTING
 var _elapsed: float = 0.0
 var _duration: float =0.0
 var _bite_timer: float = 2.0
 var _hook_window: float
-var _bar_h: float
-var _bar_pos: float = 0.0
-var _bar_vel: float = 0.0
-var _fish_pos: float = 0.5
-var _fish_vel: float = 0.0
 var _progress_val: float = 0.0
-var _fish_seed: float
 var _fishing_succeded := false
 
 func _on_target_area_2d_body_entered(body: Node2D) -> void:
@@ -42,12 +36,6 @@ signal fishing_finished(success : bool)
 
 signal fish_caught(fish : FishData) #the pattern is for the movement type from the fish
 
-func _on_fish_caught() -> void: #these are debug currently
-	print("Fish caught!")
-
-func _on_fish_escaped() -> void: #these are debug currently
-	print("Fish got away!")
-	
 func _ready():
 	if not fish:
 		push_warning("FishingMinigame requires passing in a fish to play")
@@ -57,6 +45,7 @@ func _ready():
 func _physics_process(delta: float):
 	_elapsed += delta
 	_duration += delta
+	var _end_screen_shown = false
 	
 	match _state :
 		STATE.CASTING:
@@ -65,13 +54,20 @@ func _physics_process(delta: float):
 		STATE.BITE:
 			_bite_timer -= delta * 1 #if we want to add rods we just change this to * rod.biteratetimer and pass in rod at the top
 			if _bite_timer <= 0.0:
+				$UI_container/Hook.visible = true
+				
 				_hook_fish()
 		STATE.HOOK:
 			_hook_window -= delta * 1
+			_flashbang($UI_container/Hook, _hook_window/4)
+			_engorge_ui($UI_container/Hook, 1.05,_hook_window/4)
+			_shake($UI_container/Hook,3.0,_hook_window/4)
+			#HOOK WINDOW, SHOW TEXT
 			if _hook_window <= 0.0:
+				$UI_container/Hook.visible = false
 				_fail("Too slow")
 			elif Input.is_action_just_pressed("fish"):
-				print("DEBUG: Player Pressed Hook Button") # 2. Is the input working?
+				$UI_container/Hook.visible = false
 				_on_hook()
 		STATE.PLAY:
 			print(fish_in_bar)
@@ -83,16 +79,38 @@ func _physics_process(delta: float):
 			_progress_val = clamp(_progress_val,0.0,100.0)
 			%TextureProgressBar.value = _progress_val
 			if _progress_val >= 100:
-				_on_fish_caught()
 				_fishing_succeded = true
 				_state = STATE.END
 			elif _progress_val <= 0:
-				_on_fish_escaped()
+				_fail("Fish Got Away")
 				_fishing_succeded = false
 				_state = STATE.END
 		STATE.END:
-			_clean_fishing_minigame()
-			
+			if not _end_screen_shown:
+				_end_screen_shown = true # Lock this block so it only runs ONCE
+				_clean_fishing_minigame()
+				if _fishing_succeded:
+					var caught = $UI_container/CAUGHT
+					caught.visible = true
+					# These only trigger once now!
+					_shake(caught, 3.0, 0.5)
+					_flashbang(caught, 0.5)
+					_engorge_ui(caught, 1.1, 0.5)
+					await get_tree().create_timer(2.0).timeout
+					caught.visible = false
+					_display_fish() # Show the fish stats/sprite
+					_state = STATE.RESULTS
+					
+				else:
+					var to_Bad = $UI_container/To_Bad
+					to_Bad.visible = true
+					await get_tree().create_timer(1.0).timeout
+					to_Bad.visible = false
+					_state = STATE.RESULTS
+					
+		STATE.RESULTS: #Show STATS!
+			if Input.is_action_just_pressed("fish"):
+				fishing_finished.emit(_fishing_succeded)
 
 func _hook_fish():
 	_state = STATE.HOOK
@@ -112,16 +130,18 @@ func _on_hook():
 	fish_caught.emit(fish)
 	_progress_val = 15.0 #so you dont insta fail
 	_time_stop(0.06)
-	_shake(6.0,0.18)
+	_shake(root_ui,6.0,0.18)
 	_state = STATE.PLAY
 
 func _fail(_why: String):
 	_state = STATE.END
 	print("fail : " + _why)
 	#play hook fail sfx
-	_shake(5.0,0.20)
-	await get_tree().create_timer(0.2).timeout
-	emit_signal("fishing_finished",false,fish)
+	_shake(root_ui,5.0,0.20)
+	$Fishing_bar_outside.visible = false
+	$UI_container/TextureProgressBar.visible = false
+	#await get_tree().create_timer(0.2).timeout
+	#emit_signal("fishing_finished",false,fish)
 	
 func _engorge_ui(node: Node, scale_to: float, time: float):
 	var t: = create_tween()
@@ -133,18 +153,29 @@ func _flashbang(node: Sprite2D, duration: float):
 	t.tween_property(node, "modulate", Color(1,1,1,.4), duration * 0.5)
 	t.tween_property(node, "modulate", Color(1,1,1,1), duration * 0.5)
 
-func _shake(intensity: float, duration: float):
+func _shake(node : Node, intensity: float, duration: float):
+	var original_pos = node.position
 	var tween :=  create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
 	for i in range(8):
-		var off: = Vector2(randf_range(-intensity, intensity), randf_range(-intensity,intensity))
-		tween.tween_property(root_ui,"position",off,duration/8.0)
-	tween.tween_property(root_ui, "position", Vector2.ZERO, 0.06)
+		var off : Vector2 = original_pos + Vector2(randf_range(-intensity, intensity), randf_range(-intensity,intensity))
+		tween.tween_property(node,"position",off,duration/8.0)
+	tween.tween_property(node, "position", Vector2.ZERO, 0.06)
 	
 func _time_stop(seconds: float):
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(seconds,true,true,true).timeout
 	Engine.time_scale = 1.0
 	
-func _clean_fishing_minigame():#TODO
+func _clean_fishing_minigame():
 	$Difficulty_manager.stop_spawners()
-	print("all claened up")
+	$Fishing_bar_outside.visible = false
+	$UI_container/TextureProgressBar.visible = false
+	
+	
+func _display_fish():
+	var fishSprite = $UI_container/PotentialFish
+	fishSprite.texture = fish.texture
+	$UI_container/ChoppingBlock.visible = true
+	#maybe play a poof animation when displaying fish
+	fishSprite.visible = true

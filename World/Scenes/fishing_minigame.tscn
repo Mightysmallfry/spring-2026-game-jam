@@ -4,21 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
 [ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="2_g71rd"]
 [ext_resource type="Texture2D" uid="uid://nawbcf1jh4cv" path="res://Assets/Patterns/Bars/Fish_target.png" id="2_qdkb4"]
-[ext_resource type="Texture2D" uid="uid://bnk3bnsfjga5b" path="res://Fish/Assets/Black Crappie.png" id="3_i0p6e"]
+[ext_resource type="Texture2D" uid="uid://dfmuyofgtfvve" path="res://Fish/Assets/Little Carp.png" id="3_a461w"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
 [ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/fishing_target.gd" id="4_spu5d"]
 [ext_resource type="Script" uid="uid://od8lta8xsb47" path="res://World/Bar_movement.gd" id="5_0kedh"]
+[ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/HOOK!.png" id="6_i0p6e"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
-[ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://World/Scenes/difficulty_manager.gd" id="10_c43qd"]
+[ext_resource type="Texture2D" uid="uid://cic0evj1yas4h" path="res://Assets/CuttingBoard.png" id="7_y001a"]
+[ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/CAUGHT.png" id="8_vktwq"]
+[ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/TO BAD!.png" id="9_a461w"]
+[ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://World/difficulty_manager.gd" id="10_c43qd"]
 [ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://enemy_fish_spawner.tscn" id="10_di3fb"]
 
 [sub_resource type="Resource" id="Resource_y001a"]
 script = ExtResource("2_g71rd")
 fishName = "Gus"
-fishRarity = 1
-fishMoves = 3
-texture = ExtResource("3_i0p6e")
+fishRarity = 3
+fishMoves = 4
+texture = ExtResource("3_a461w")
 length = 20.0
 girth = 20.0
 weight = 20.0
@@ -34,7 +38,7 @@ size = Vector2(80, 36)
 size = Vector2(16, 6)
 
 [node name="FishingGame" type="Node2D" unique_id=1407624943 groups=["GameManager"]]
-position = Vector2(200, 200)
+position = Vector2(320, 400)
 script = ExtResource("1_0kedh")
 fish = SubResource("Resource_y001a")
 
@@ -55,6 +59,30 @@ texture_under = ExtResource("6_spu5d")
 texture_progress = ExtResource("7_md58f")
 tint_progress = Color(0.23137255, 1, 0.32941177, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Hook" type="Sprite2D" parent="UI_container" unique_id=1719544583]
+visible = false
+position = Vector2(0, -200)
+texture = ExtResource("6_i0p6e")
+
+[node name="ChoppingBlock" type="Sprite2D" parent="UI_container" unique_id=877536555]
+visible = false
+position = Vector2(0, -150)
+texture = ExtResource("7_y001a")
+
+[node name="PotentialFish" type="Sprite2D" parent="UI_container" unique_id=88231319]
+visible = false
+position = Vector2(-5, -150)
+
+[node name="CAUGHT" type="Sprite2D" parent="UI_container" unique_id=682002029]
+visible = false
+position = Vector2(0, -200)
+texture = ExtResource("8_vktwq")
+
+[node name="To_Bad" type="Sprite2D" parent="UI_container" unique_id=22124615]
+visible = false
+position = Vector2(0, -200)
+texture = ExtResource("9_a461w")
 
 [node name="Fishing_bar_outside" type="Sprite2D" parent="." unique_id=1160197251]
 position = Vector2(0, -6)
@@ -113,19 +141,19 @@ shape = SubResource("RectangleShape2D_8i7cv")
 script = ExtResource("10_c43qd")
 
 [node name="Spawner_1" parent="Difficulty_manager" unique_id=1097619320 node_paths=PackedStringArray("target_node") instance=ExtResource("10_di3fb")]
-position = Vector2(-208, -195)
+position = Vector2(-338, -199)
 target_node = NodePath("../../Fishing_bar_outside")
 
 [node name="Spawner_2" parent="Difficulty_manager" unique_id=61158695 node_paths=PackedStringArray("target_node") instance=ExtResource("10_di3fb")]
-position = Vector2(-67, -313)
+position = Vector2(-173, -418)
 target_node = NodePath("../../Fishing_bar_outside")
 
 [node name="Spawner_3" parent="Difficulty_manager" unique_id=1569956970 node_paths=PackedStringArray("target_node") instance=ExtResource("10_di3fb")]
-position = Vector2(90, -318)
+position = Vector2(178, -414)
 target_node = NodePath("../../Fishing_bar_outside")
 
 [node name="Spawner_4" parent="Difficulty_manager" unique_id=190699562 node_paths=PackedStringArray("target_node") instance=ExtResource("10_di3fb")]
-position = Vector2(211, -204)
+position = Vector2(336, -204)
 target_node = NodePath("../../Fishing_bar_outside")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=919268266]
