@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgh2kvqqxyn6k"]
+[gd_scene format=3 uid="uid://bgh2kvqqxyn6k"]
 
 [ext_resource type="Script" uid="uid://bsjuy5tkg8fok" path="res://Managers/transition/transition_manager.gd" id="1_46ok3"]
 [ext_resource type="Shader" uid="uid://dybupsykc75xu" path="res://Managers/shaders/transition_fade.gdshader" id="2_l0mmg"]
@@ -28,11 +28,11 @@ _data = {
 &"fade_in": SubResource("Animation_xs1ov")
 }
 
-[node name="TransitionManager" type="CanvasLayer"]
+[node name="TransitionManager" type="CanvasLayer" unique_id=736230503]
 layer = 10
 script = ExtResource("1_46ok3")
 
-[node name="TransitionColor" type="ColorRect" parent="."]
+[node name="TransitionColor" type="ColorRect" parent="." unique_id=1287304625]
 material = SubResource("ShaderMaterial_4mqyp")
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +42,5 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TransitionAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_l0mmg")
-}
+[node name="TransitionAnimation" type="AnimationPlayer" parent="." unique_id=1977909297]
+libraries/ = SubResource("AnimationLibrary_l0mmg")

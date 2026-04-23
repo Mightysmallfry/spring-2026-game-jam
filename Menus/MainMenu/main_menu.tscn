@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://taoio1upqgsx" path="res://Menus/MainMenu/main_menu_pattern.gdshader" id="1_wotb1"]
 [ext_resource type="AudioStream" uid="uid://i5h32xsxba6a" path="res://Audio/music/lightyeartraxx-kim-lightyear-legends-109307.mp3" id="2_y4ryc"]
 [ext_resource type="AudioStream" uid="uid://bo8vocor510od" path="res://Audio/music/delon_boomkin-thug-life-music-2-461148.mp3" id="3_7f67a"]
+[ext_resource type="Texture2D" uid="uid://daqq6oidhmfsv" path="res://Assets/Menu.png" id="6_lkur8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qq57v"]
 shader = ExtResource("1_wotb1")
@@ -46,15 +47,25 @@ grow_vertical = 2
 texture = ExtResource("1_3e31c")
 stretch_mode = 1
 
-[node name="TitleBackground" type="PanelContainer" parent="." unique_id=320636827]
-layout_mode = 1
-offset_left = 31.0
-offset_top = 38.0
-offset_right = 310.0
-offset_bottom = 106.0
+[node name="TitleBackground" type="NinePatchRect" parent="." unique_id=993119375]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 32.0
+offset_right = 302.0
+offset_bottom = 112.0
+texture = ExtResource("6_lkur8")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
 
 [node name="TitleContainer" type="MarginContainer" parent="TitleBackground" unique_id=2031055351]
-layout_mode = 2
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 269.0
+offset_bottom = 74.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -64,6 +75,8 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 36
 text = "Fishin' Fealty"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonContainer" type="MarginContainer" parent="." unique_id=17416427]
 custom_minimum_size = Vector2(120, 180)
