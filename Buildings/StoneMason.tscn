@@ -11,6 +11,7 @@ script = ExtResource("1_gupan")
 buildingSprite = NodePath("BuildingSprite")
 interactArea = NodePath("InteractArea")
 collisionArea = NodePath("CollisionArea")
+buildingName = "StoneMason"
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=827451083]
 

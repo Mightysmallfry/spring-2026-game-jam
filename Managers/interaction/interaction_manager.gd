@@ -31,9 +31,12 @@ func _process(delta: float) -> void:
 		
 	Global.debug_menu.add_property("CanInteract", canInteract, 10)
 	
-	# We need to know what building we are in
+	# The buildings will work with this interact
+	# Fishing will be separate
 	if (canInteract && Input.is_action_just_pressed("interact")):
-		print("interacted with " + focusedInteraction.get_parent().name)
+		# print("interacted with " + focusedInteraction.get_parent().name)
+		focusedInteraction.get_parent().interact()
+
 
 func register_interaction(area : Area2D) -> void: 
 	activeInteractions.append(area)

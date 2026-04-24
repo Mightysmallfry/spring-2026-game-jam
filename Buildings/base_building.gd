@@ -29,3 +29,7 @@ func _on_interact_area_body_entered(body: Node2D) -> void:
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	#print("Body exited")
 	Global.interaction_manager.remove_interaction(interactArea)
+
+func interact() -> void:
+	# print("Interact Called On " + name)
+	pass

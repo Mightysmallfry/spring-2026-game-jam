@@ -8,6 +8,7 @@ script = ExtResource("1_tnr4m")
 buildingSprite = NodePath("BuildingSprite")
 interactArea = NodePath("InteractArea")
 collisionArea = NodePath("CollisionArea")
+buildingName = "Merchant"
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=2103630068]
 

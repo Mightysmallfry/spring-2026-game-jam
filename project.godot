@@ -36,6 +36,12 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Spring2026GameJam"
 
+[global_group]
+
+tile_map_layers=""
+buildings=""
+player=""
+
 [input]
 
 debug_menu={
