@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bvul6fueu7mx4"]
 
 [ext_resource type="Script" uid="uid://mph3kvw4eaus" path="res://enemy_fish.gd" id="1_c1dfi"]
-[ext_resource type="Texture2D" uid="uid://bqc454goouxa8" path="res://Fish/Assets/Carp.png" id="1_x20pl"]
+[ext_resource type="Texture2D" uid="uid://21wibtdy5483" path="res://Assets/Patterns/Bars/Evil_Fish.png" id="2_lymoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1dfi"]
-size = Vector2(332, 140)
+size = Vector2(87, 27)
 
 [node name="Area2D" type="Area2D" unique_id=1738273771]
 collision_layer = 8
@@ -12,11 +12,11 @@ collision_mask = 8
 script = ExtResource("1_c1dfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=313148917]
-position = Vector2(14, -6)
+position = Vector2(1.5, -1.5)
 shape = SubResource("RectangleShape2D_c1dfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=208005239]
-texture = ExtResource("1_x20pl")
+texture = ExtResource("2_lymoh")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

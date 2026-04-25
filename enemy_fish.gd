@@ -19,6 +19,12 @@ func _physics_process(delta):
 		# Calculate direction and move
 		var direction = (target_position - global_position).normalized()
 		global_position += direction * speed * delta
+		var target_angle = direction.angle() + PI
+		rotation = lerp_angle(rotation,target_angle,5.0 * delta)
+		if direction.x > 0:
+			$Sprite2D.flip_v = true
+		else:
+			$Sprite2D.flip_v = false
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:

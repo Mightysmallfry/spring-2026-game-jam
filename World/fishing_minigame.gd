@@ -28,7 +28,7 @@ func _on_target_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "FishBar":
 		fish_in_bar = false
 
-signal fishing_finished(success : bool)
+signal fishing_finished(success : bool, fish : FishData)
 
 signal fish_caught(fish : FishData) #the pattern is for the movement type from the fish
 
@@ -101,11 +101,22 @@ func _physics_process(delta: float):
 					to_Bad.visible = true
 					await get_tree().create_timer(1.0).timeout
 					to_Bad.visible = false
-					_state = STATE.RESULTS
+					_fail("failed to catch")
 					
 		STATE.RESULTS: #Show STATS!
 			if Input.is_action_just_pressed("fish"):
-				fishing_finished.emit(_fishing_succeded)
+				fishing_finished.emit(_fishing_succeded,fish)
+				_distroy_game()
+
+func _distroy_game():
+	set_physics_process(false)
+	set_process(false)
+	#kill runaway Tweens
+	var active_tweens = get_tree().get_processed_tweens()
+	for t in active_tweens:
+		if t.is_valid():
+			t.kill()
+	queue_free()
 
 func _hook_fish():
 	_state = STATE.HOOK
@@ -133,6 +144,8 @@ func _fail(_why: String):
 	_shake(root_ui,5.0,0.20)
 	$Fishing_bar_outside.visible = false
 	$UI_container/TextureProgressBar.visible = false
+	fishing_finished.emit(_fishing_succeded,fish)
+	_distroy_game()
 	#await get_tree().create_timer(0.2).timeout
 	#emit_signal("fishing_finished",false,fish)
 	
@@ -141,7 +154,7 @@ func _engorge_ui(node: Node, scale_to: float, time: float):
 	t.tween_property(node, "scale", Vector2.ONE * scale_to, time * .5)
 	t.tween_property(node, "scale",Vector2.ONE, time * 0.5)
 
-func _flashbang(node: Sprite2D, duration: float):
+func _flashbang(node: CanvasItem, duration: float):
 	var t: = create_tween()
 	t.tween_property(node, "modulate", Color(1,1,1,.4), duration * 0.5)
 	t.tween_property(node, "modulate", Color(1,1,1,1), duration * 0.5)
@@ -167,7 +180,38 @@ func _clean_fishing_minigame():
 	
 func _display_fish():
 	var fishSprite = $UI_container/PotentialFish
+	var choppingblock = $UI_container/ChoppingBlock
+	var vbox = $UI_container/Panel/VBoxContainer
+	var panel = $UI_container/Panel
+	panel.visible = true
+	vbox.get_node("Name").text = "Name: " + fish.fishName
+	var rarity_name = Enums.FishRarity.keys()[fish.fishRarity]
+	vbox.get_node("Rarity").text = "Rarity: " + rarity_name
+	
+	var display_weight = snapped(fish.weight + randf_range(-1.5, 1.5), 0.01)
+	vbox.get_node("Weight").text = "Weight: " + str(display_weight)
+	
+	var display_girth = snapped(fish.girth + randf_range(-1.5, 1.5), 0.01)
+	vbox.get_node("Girth").text = "Girth: " + str(display_girth)
+	
+	var display_length = snapped(fish.length + randf_range(-1.5, 1.5), 0.01)
+	vbox.get_node("Length").text = "Length: " + str(display_length)
+	
+	_flashbang(vbox,0.5)
+	
 	fishSprite.texture = fish.texture
-	$UI_container/ChoppingBlock.visible = true
-	#maybe play a poof animation when displaying fish
+	choppingblock.visible = true
+	
 	fishSprite.visible = true
+	fishSprite.modulate.a = 0
+	fishSprite.scale = Vector2.ZERO
+	
+	var tween = get_tree().create_tween()
+	
+	tween.set_parallel(true)
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(fishSprite, "scale",Vector2.ONE,0.4)
+	tween.tween_property(fishSprite, "modulate:a",1.0,0.3)
+	
