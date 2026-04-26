@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_y001a"]
 script = ExtResource("2_g71rd")
 fishName = "TestFish"
-fishRarity = 5
+fishRarity = 2
 fishMoves = 4
 texture = ExtResource("3_a461w")
 length = 20.0

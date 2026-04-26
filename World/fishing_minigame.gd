@@ -1,5 +1,11 @@
 extends Node2D
 
+#NOTE FOR J-BONE!!!!!
+#this emits a signal then hides itself, if you want to fish a new fish you need to call reset_for_new_fish(fish : FISHDATA)
+#I dont know how we were thinking of doing this but we could check if the fishing minigame exists and it
+#it doesent we create it and if it does we call reset_for_new_fish()
+#it should be ready for integration!
+
 @onready var root_ui: Node2D = $UI_container
 @onready var catch_area: Sprite2D = $Fishing_bar_outside/Fishing_target
 
@@ -19,6 +25,7 @@ var _bite_timer: float = 2.0
 var _hook_window: float
 var _progress_val: float = 0.0
 var _fishing_succeded := false
+var _end_screen_shown = false
 
 func _on_target_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "FishBar":
@@ -41,7 +48,7 @@ func _ready():
 func _physics_process(delta: float):
 	_elapsed += delta
 	_duration += delta
-	var _end_screen_shown = false
+
 	
 	match _state :
 		STATE.CASTING:
@@ -82,8 +89,8 @@ func _physics_process(delta: float):
 				_state = STATE.END
 		STATE.END:
 			if not _end_screen_shown:
-				_end_screen_shown = true # Lock this block so it only runs ONCE
-				_clean_fishing_minigame()
+				_end_screen_shown = true
+				_clean_fishing_minigame_for_display()
 				if _fishing_succeded:
 					var caught = $UI_container/CAUGHT
 					caught.visible = true
@@ -106,9 +113,10 @@ func _physics_process(delta: float):
 		STATE.RESULTS: #Show STATS!
 			if Input.is_action_just_pressed("fish"):
 				fishing_finished.emit(_fishing_succeded,fish)
-				_distroy_game()
+				#The thing restarts so If you want to reset the game pause it as soon as you get the signal
+				_deactivate_game()
 
-func _distroy_game():
+func _clean_tweens():
 	set_physics_process(false)
 	set_process(false)
 	#kill runaway Tweens
@@ -116,7 +124,33 @@ func _distroy_game():
 	for t in active_tweens:
 		if t.is_valid():
 			t.kill()
-	queue_free()
+	#queue_free()
+	
+func _set_visuals_on_restart():
+	#Hide End Game UI
+	$UI_container/Panel.visible = false
+	$UI_container/Hook.visible = false
+	$UI_container/ChoppingBlock.visible = false
+	$UI_container/CAUGHT.visible = false
+	$UI_container/To_Bad.visible = false
+	
+	#ensuring the root is visible just in case
+	root_ui.visible = true
+	root_ui.modulate.a = 1.0
+	root_ui.scale = Vector2.ONE
+	
+	#Reset the Fish Sprite
+	var fishSprite = $UI_container/PotentialFish
+	fishSprite.visible = false
+	fishSprite.modulate.a = 0
+	fishSprite.scale = Vector2.ZERO
+	
+	#Show Gameplay UI
+	$Fishing_bar_outside.visible = true
+	%TextureProgressBar.value = 0.0
+	%TextureProgressBar.visible = true
+	
+	
 
 func _hook_fish():
 	_state = STATE.HOOK
@@ -145,9 +179,32 @@ func _fail(_why: String):
 	$Fishing_bar_outside.visible = false
 	$UI_container/TextureProgressBar.visible = false
 	fishing_finished.emit(_fishing_succeded,fish)
-	_distroy_game()
+	#the game should be paused as soon as you get the signl
+	#_distroy_game()
 	#await get_tree().create_timer(0.2).timeout
 	#emit_signal("fishing_finished",false,fish)
+	
+func _deactivate_game():
+	set_physics_process(false)
+	self.hide()
+	_clean_tweens()
+	
+func reset_for_new_fish(new_fish_data : FishData):
+	_state = STATE.CASTING
+	_elapsed = 0.0
+	_duration = 0.0
+	_bite_timer = 2.0
+	_progress_val = 0.0
+	_end_screen_shown = false
+	fish = new_fish_data
+	#Update Difficulty for the new fish!
+	$Difficulty_manager.dificulty = fish.fishRarity
+	#reset visuals to default
+	_set_visuals_on_restart()
+	#wake
+	set_physics_process(true)
+	self.show()
+	
 	
 func _engorge_ui(node: Node, scale_to: float, time: float):
 	var t: = create_tween()
@@ -173,8 +230,10 @@ func _time_stop(seconds: float):
 	await get_tree().create_timer(seconds,true,true,true).timeout
 	Engine.time_scale = 1.0
 	
-func _clean_fishing_minigame():
+func _clean_fishing_minigame_for_display():
 	$Difficulty_manager.stop_spawners()
+	for enemy in $Enemies.get_children():
+		enemy.queue_free()
 	$Fishing_bar_outside.visible = false
 	$UI_container/TextureProgressBar.visible = false
 	
