@@ -28,3 +28,5 @@ func interact() -> void:
 		player.global_position.x = -player.global_position.x;
 	Global.transition_manager.transition_fade_in()
 	
+	Global.tile_map_manager.rebuild()
+	Global.tile_map_terrain_manager.rebuild()

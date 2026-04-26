@@ -9,6 +9,8 @@ var transition_manager : TransitionManager
 var game_viewport_manager : GameViewportManager
 var interaction_manager : InteractionManager
 var pause_menu : PauseMenu
+var tile_map_manager : TileMapManager
+var tile_map_terrain_manager : TileMapTerrainManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
