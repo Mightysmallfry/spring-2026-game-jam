@@ -10,12 +10,12 @@ enum FishRarity {
 }
 
 enum FishModifier{
-	DREAM,
-	ARID,
-	TROPICAL,
-	ANGELIC,
-	DEMONIC,
-	CYBER
+	DREAM = 1 << 0,    #1
+	ARID = 1 << 1,     #2
+	TROPICAL = 1 << 2, #4
+	ANGELIC = 1 << 3,  #8
+	DEMONIC = 1 << 4,  #16
+	CYBER = 1 << 5     #32
 }
 
 enum FishMoves{
