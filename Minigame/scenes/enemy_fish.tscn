@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvul6fueu7mx4"]
 
-[ext_resource type="Script" uid="uid://mph3kvw4eaus" path="res://enemy_fish.gd" id="1_c1dfi"]
+[ext_resource type="Script" uid="uid://mph3kvw4eaus" path="res://Minigame/enemy_fish.gd" id="1_c1dfi"]
 [ext_resource type="Texture2D" uid="uid://21wibtdy5483" path="res://Assets/Patterns/Bars/Evil_Fish.png" id="2_lymoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1dfi"]

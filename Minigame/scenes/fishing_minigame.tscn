@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dskhc00dej3mo"]
 
-[ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://World/fishing_minigame.gd" id="1_0kedh"]
+[ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://Minigame/fishing_minigame.gd" id="1_0kedh"]
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
 [ext_resource type="AudioStream" uid="uid://dlf6yq3ruqdjd" path="res://Audio/music/delon_boomkin-electro-music-intro-new-2-410109.mp3" id="2_4nmv5"]
 [ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="2_g71rd"]
@@ -8,16 +8,16 @@
 [ext_resource type="AudioStream" uid="uid://bo8vocor510od" path="res://Audio/music/delon_boomkin-thug-life-music-2-461148.mp3" id="3_0kq34"]
 [ext_resource type="Texture2D" uid="uid://dgrxc7pbw3h54" path="res://Fish/Assets/Pike.png" id="3_a461w"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
-[ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/fishing_target.gd" id="4_spu5d"]
-[ext_resource type="Script" uid="uid://od8lta8xsb47" path="res://World/Bar_movement.gd" id="5_0kedh"]
+[ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://Minigame/fishing_target.gd" id="4_spu5d"]
+[ext_resource type="Script" uid="uid://od8lta8xsb47" path="res://Minigame/Bar_movement.gd" id="5_0kedh"]
 [ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/HOOK!.png" id="6_i0p6e"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
 [ext_resource type="Texture2D" uid="uid://cic0evj1yas4h" path="res://Assets/CuttingBoard.png" id="7_y001a"]
 [ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/CAUGHT.png" id="8_vktwq"]
 [ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/TO BAD!.png" id="9_a461w"]
-[ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://World/difficulty_manager.gd" id="10_c43qd"]
-[ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://World/Scenes/enemy_fish_spawner.tscn" id="10_di3fb"]
+[ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://Minigame/difficulty_manager.gd" id="10_c43qd"]
+[ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://Minigame/scenes/enemy_fish_spawner.tscn" id="10_di3fb"]
 
 [sub_resource type="Resource" id="Resource_y001a"]
 script = ExtResource("2_g71rd")

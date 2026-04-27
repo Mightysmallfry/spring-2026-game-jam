@@ -6,8 +6,7 @@ class_name TileMapManager
 @export var tile_size: Vector2 = Vector2(64, 32)
 @onready var player = $"../Player"
 
-var fishMinigamePath : String = "res://World/Scenes/fishing_minigame.tscn"
-
+var fishMinigamePath : String = "res://Minigame/scenes/fishing_minigame.tscn"
 var border_area: Area2D
 
 const DIRECTIONS = [

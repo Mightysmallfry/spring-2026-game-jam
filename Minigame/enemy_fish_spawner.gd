@@ -3,7 +3,7 @@ extends Marker2D
 @export var target_node : Node2D
 var spawn_speed : float = 0.1
 var enemy_speed: float = 50 #default
-var enemy_scene = preload("res://World/Scenes/enemy_fish.tscn")
+var enemy_scene = preload("res://Minigame/scenes/enemy_fish.tscn")
 #@onready var enemy_container = get_node("/root/FishingGame/Enemies")
 @onready var enemy_container = $"../../Enemies"
 
