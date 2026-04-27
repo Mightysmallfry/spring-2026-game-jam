@@ -11,3 +11,4 @@ func _input(event):
 	if event is InputEventMouse:
 		var local_event = make_input_local(event)
 		subViewport.push_input(local_event)
+		subViewport.push_unhandled_input(local_event)

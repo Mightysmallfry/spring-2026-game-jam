@@ -43,11 +43,6 @@ signal fishing_finished(success : bool, fish : FishData)
 
 signal fish_caught(fish : FishData) #the pattern is for the movement type from the fish
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		print("Input reached: ", name)
-		
-
 func _ready():
 	Global.audio_manager.play_music(fishingGameMusic)
 	

@@ -7,6 +7,10 @@ var speed = 100
 
 signal hit_bar()
 
+func _ready() -> void:
+	input_event.connect(_on_input_event)
+	area_entered.connect(_on_area_entered)
+
 func setup_target(node : Node2D):
 	if node:
 		var center = node.global_position
@@ -26,8 +30,18 @@ func _physics_process(delta):
 		else:
 			$Sprite2D.flip_v = false
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		print("Fish global: ", global_position)
+		print("Fish local: ", position)
+		print("Mouse global: ", get_viewport().get_mouse_position())
+		print("Event position: ", event.position)
+		print("Event global position: ", event.global_position)
+
+
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
+		print("Fish down")
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			on_clicked()
 

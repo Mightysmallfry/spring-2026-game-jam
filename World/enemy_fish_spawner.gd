@@ -1,12 +1,13 @@
 extends Marker2D
 
 @export var target_node : Node2D
-var spawn_speed : float
+var spawn_speed : float = 0.1
 var enemy_speed: float = 50 #default
 var enemy_scene = preload("res://World/Scenes/enemy_fish.tscn")
 #@onready var enemy_container = get_node("/root/FishingGame/Enemies")
 @onready var enemy_container = $"../../Enemies"
 
+var fish_count : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,12 +25,15 @@ func stop_spawning():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func spawn_enemy():
-	var enemy = enemy_scene.instantiate()
+	var enemy = enemy_scene.instantiate() as Area2D
+	fish_count += 1
+	enemy.name = "fish_" + str(fish_count)
 	enemy_container.add_child(enemy)
 	
 	enemy.global_position = global_position
 	enemy.setup_target(target_node)
 	enemy.speed = enemy_speed
+	enemy.input_pickable = true
 	
 	#Connecting signal from enemy
 	var game_node = get_tree().get_first_node_in_group("GameManager")
