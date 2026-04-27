@@ -73,8 +73,13 @@ func _build_border() -> void:
 
 func _on_player_entered_border(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("Player near water")
+		Global.interaction_manager.register_interaction(border_area)
 
 func _on_player_exited_border(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("Player left water border")
+		Global.interaction_manager.remove_interaction(border_area)
+		
+func interact() -> void:
+	print("interacted with water!")
+	
+	

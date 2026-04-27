@@ -24,7 +24,11 @@ func _process(delta: float) -> void:
 		activeInteractions.sort_custom(sort_by_distance_from_player)
 		focusedInteraction = activeInteractions[0]
 		adjust_focused_interaction()
-		interactionLabel.visible = true
+		
+		if (focusedInteraction.get_parent() is not BaseBuilding):
+			interactionLabel.visible = false
+		else:
+			interactionLabel.visible = true
 	else:
 		canInteract = false
 		interactionLabel.visible = false
