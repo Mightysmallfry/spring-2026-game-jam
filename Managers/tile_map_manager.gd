@@ -86,5 +86,5 @@ func interact() -> void:
 	print("interacted with water!")
 	Global.last_player_location = player.global_position
 	Global.player_locked = true
-	Global.game_manager.change_gui_scene(fishMinigamePath, false, false)
+	Global.game_manager.change_2d_scene(fishMinigamePath, false, false)
 	
