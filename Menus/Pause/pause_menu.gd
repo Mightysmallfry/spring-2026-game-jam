@@ -25,7 +25,10 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 	
 func _on_resume_button_pressed() -> void:
+	Engine.time_scale = 1
 	Global.pause()
+	await blur_out()
+	visible = false
 
 func blur_in():
 	print("blurred")

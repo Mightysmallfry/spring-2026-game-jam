@@ -150,8 +150,6 @@ func _set_visuals_on_restart():
 	%TextureProgressBar.value = 0.0
 	%TextureProgressBar.visible = true
 	
-	
-
 func _hook_fish():
 	_state = STATE.HOOK
 	_hook_window = BASE_HOOK_WINDOW * 1 #replace hook window with rod hook window mult
