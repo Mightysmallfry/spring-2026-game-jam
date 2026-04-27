@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://World/fishing_minigame.gd" id="1_0kedh"]
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
+[ext_resource type="AudioStream" uid="uid://dlf6yq3ruqdjd" path="res://Audio/music/delon_boomkin-electro-music-intro-new-2-410109.mp3" id="2_4nmv5"]
 [ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="2_g71rd"]
 [ext_resource type="Texture2D" uid="uid://nawbcf1jh4cv" path="res://Assets/Patterns/Bars/Fish_target.png" id="2_qdkb4"]
+[ext_resource type="AudioStream" uid="uid://bo8vocor510od" path="res://Audio/music/delon_boomkin-thug-life-music-2-461148.mp3" id="3_0kq34"]
 [ext_resource type="Texture2D" uid="uid://dgrxc7pbw3h54" path="res://Fish/Assets/Pike.png" id="3_a461w"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
 [ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://World/fishing_target.gd" id="4_spu5d"]
@@ -40,6 +42,8 @@ size = Vector2(16, 6)
 [node name="FishingGame" type="Node2D" unique_id=1407624943 groups=["GameManager"]]
 position = Vector2(320, 400)
 script = ExtResource("1_0kedh")
+fishingGameMusic = ExtResource("2_4nmv5")
+successSong = ExtResource("3_0kq34")
 fish = SubResource("Resource_y001a")
 
 [node name="UI_container" type="Node2D" parent="." unique_id=1749612361]

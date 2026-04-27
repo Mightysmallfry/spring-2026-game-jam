@@ -6,6 +6,9 @@ extends Node2D
 #it doesent we create it and if it does we call reset_for_new_fish()
 #it should be ready for integration!
 var MainGamePath : String = "res://World/Scenes/TestWorld.tscn"
+@export var fishingGameMusic : AudioStream
+@export var successSong : AudioStream
+
 
 @onready var root_ui: Node2D = $UI_container
 @onready var catch_area: Sprite2D = $Fishing_bar_outside/Fishing_target
@@ -44,12 +47,10 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		print("Input reached: ", name)
 		
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		print("Unhandled Input reached: ", name)
-
 
 func _ready():
+	Global.audio_manager.play_music(fishingGameMusic)
+	
 	if not fish:
 		push_warning("FishingMinigame requires passing in a fish to play")
 		return
@@ -110,6 +111,8 @@ func _physics_process(delta: float):
 					_engorge_ui(caught, 1.1, 0.5)
 					await get_tree().create_timer(2.0).timeout
 					caught.visible = false
+					Global.audio_manager.play_music(successSong)
+					await get_tree().create_timer(1.0).timeout
 					_display_fish() # Show the fish stats/sprite
 					_state = STATE.RESULTS
 					
@@ -126,6 +129,7 @@ func _physics_process(delta: float):
 				fishing_finished.emit(_fishing_succeded,fish)
 				#The thing restarts so If you want to reset the game pause it as soon as you get the signal
 				_deactivate_game()
+				Global.game_manager.change_2d_scene(MainGamePath, false, false)
 
 func _clean_tweens():
 	set_physics_process(false)
