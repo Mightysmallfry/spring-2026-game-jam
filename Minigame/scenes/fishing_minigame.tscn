@@ -11,22 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/Banners/HOOK!.png" id="6_i0p6e"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
-[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="7_tykjn"]
-[ext_resource type="Texture2D" uid="uid://c54dc2t4yuxf3" path="res://Fish/Assets/cod.png" id="8_t7oyq"]
 [ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/Banners/CAUGHT.png" id="8_vktwq"]
 [ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/Banners/TO BAD!.png" id="9_a461w"]
 [ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://Minigame/difficulty_manager.gd" id="10_c43qd"]
 [ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://Minigame/scenes/enemy_fish_spawner.tscn" id="10_di3fb"]
 [ext_resource type="PackedScene" uid="uid://bn60514k7fbcl" path="res://Minigame/scenes/cutting_board.tscn" id="17_mmwe8"]
-
-[sub_resource type="Resource" id="Resource_teh40"]
-script = ExtResource("7_tykjn")
-fishName = "Cod"
-texture = ExtResource("8_t7oyq")
-length = 1.0
-girth = 23.0
-weight = 4.0
-metadata/_custom_type_script = "uid://crt5mth27sk6e"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i7cv"]
 size = Vector2(308, 36)
@@ -46,7 +35,6 @@ bannerDisplay = NodePath("GuiLayer/BannerWordDisplay")
 BANNER_HOOK = ExtResource("6_i0p6e")
 BANNER_CAUGHT = ExtResource("8_vktwq")
 BANNER_MISS = ExtResource("9_a461w")
-currentFish = SubResource("Resource_teh40")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1164694314]
 layer = -10

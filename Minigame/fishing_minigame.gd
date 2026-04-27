@@ -238,7 +238,7 @@ func _shake(node : Node, intensity: float, duration: float):
 	for i in range(8):
 		var off : Vector2 = original_pos + Vector2(randf_range(-intensity, intensity), randf_range(-intensity,intensity))
 		tween.tween_property(node,"position",off,duration/8.0)
-	tween.tween_property(node, "position", Vector2.ZERO, 0.06)
+	tween.tween_property(node, "position", original_pos, 0.06)
 	
 func _time_stop(seconds: float):
 	Engine.time_scale = 0.0
@@ -251,7 +251,4 @@ func _clean_fishing_minigame_for_display():
 		enemy.queue_free()
 	$Fishing_bar_outside.visible = false
 	progressBar.visible = false
-	
-
-
 	

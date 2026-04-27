@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FishData" load_steps=3 format=3 uid="uid://bb80jfgp3a12t"]
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bb80jfgp3a12t"]
 
 [ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_tdlps"]
 [ext_resource type="Texture2D" uid="uid://bqc454goouxa8" path="res://Fish/Assets/Carp.png" id="2_ha6d7"]
@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("1_tdlps")
 fishName = "Carp"
-fishMoves = 5
 texture = ExtResource("2_ha6d7")
 length = 25.0
 girth = 15.0

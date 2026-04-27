@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_fxgno")
 fishName = "SmallCarp"
+fishRarity = 1
 fishMoves = 3
 texture = ExtResource("2_tbb52")
 length = 0.003

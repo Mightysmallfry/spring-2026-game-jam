@@ -21,9 +21,10 @@ const RARITY_WEIGHTS = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	randomize()
 	_fish_pool = _load_and_cache_fish(FISH_DIR)
 	_calculate_pool_weight()
-	print("Fish Data Loaded: ", _fish_pool.size(), "fish ready.")
+	print("Fish Data Loaded: ", _fish_pool.size(), " fish ready.")
 
 func _load_and_cache_fish(dirPath : String) -> Array[FishData]:
 	#Because we need to access qualities of fish to choose a rondom one, we need to have the fish preloaded.
@@ -58,6 +59,7 @@ func get_random_fish() -> FishData:
 	if _fish_pool.is_empty(): return null
 	
 	var roll = randf() * _total_weight
+	print("Rolling for fish: ", roll, " out of total weight: ", _total_weight)
 	var cursor = 0.0
 	
 	for fish in _fish_pool:
