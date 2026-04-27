@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var collisionShape : CollisionShape2D = $CollisionShape2D
+
 # Inside FishingEnemy.gd
 var target_node : Node2D
 var target_position = Vector2.ZERO
@@ -8,7 +10,7 @@ var speed = 100
 signal hit_bar()
 
 func _ready() -> void:
-	input_event.connect(_on_input_event)
+	#input_event.connect(_on_input_event)
 	area_entered.connect(_on_area_entered)
 
 func setup_target(node : Node2D):
@@ -37,13 +39,21 @@ func _input(event: InputEvent) -> void:
 		print("Mouse global: ", get_viewport().get_mouse_position())
 		print("Event position: ", event.position)
 		print("Event global position: ", event.global_position)
-
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		print("Fish down")
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		
+		var shape = collisionShape.shape as RectangleShape2D
+		var fishRect = Rect2(global_position - shape.size / 2, shape.size)
+		var mouse = get_viewport().get_mouse_position()
+		
+		if (fishRect.has_point(mouse)):
+			print("Struck a Fish")
 			on_clicked()
+
+
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#if event is InputEventMouseButton:
+		#print("Fish down")
+		#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			#on_clicked()
 
 func on_clicked():
 	speed = 0

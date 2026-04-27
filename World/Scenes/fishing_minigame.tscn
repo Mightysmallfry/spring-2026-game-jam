@@ -71,6 +71,7 @@ position = Vector2(0, -200)
 texture = ExtResource("6_i0p6e")
 
 [node name="ChoppingBlock" type="Sprite2D" parent="UI_container" unique_id=877536555]
+visible = false
 position = Vector2(0, -200)
 texture = ExtResource("7_y001a")
 
@@ -79,6 +80,7 @@ visible = false
 position = Vector2(-5, -200)
 
 [node name="CAUGHT" type="Sprite2D" parent="UI_container" unique_id=682002029]
+visible = false
 position = Vector2(0, -200)
 texture = ExtResource("8_vktwq")
 
@@ -88,6 +90,7 @@ position = Vector2(0, -200)
 texture = ExtResource("9_a461w")
 
 [node name="Panel" type="Panel" parent="UI_container" unique_id=1226436023]
+visible = false
 offset_left = -168.0
 offset_top = -80.0
 offset_right = 170.0
