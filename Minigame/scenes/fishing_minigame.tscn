@@ -3,32 +3,19 @@
 [ext_resource type="Script" uid="uid://cfi3uhp3r08r7" path="res://Minigame/fishing_minigame.gd" id="1_0kedh"]
 [ext_resource type="Texture2D" uid="uid://cppg1o0jxi7kh" path="res://Assets/Patterns/Bars/Fishing_bar.png" id="1_quil3"]
 [ext_resource type="AudioStream" uid="uid://dlf6yq3ruqdjd" path="res://Audio/music/delon_boomkin-electro-music-intro-new-2-410109.mp3" id="2_4nmv5"]
-[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="2_g71rd"]
 [ext_resource type="Texture2D" uid="uid://nawbcf1jh4cv" path="res://Assets/Patterns/Bars/Fish_target.png" id="2_qdkb4"]
 [ext_resource type="AudioStream" uid="uid://bo8vocor510od" path="res://Audio/music/delon_boomkin-thug-life-music-2-461148.mp3" id="3_0kq34"]
-[ext_resource type="Texture2D" uid="uid://dgrxc7pbw3h54" path="res://Fish/Assets/Pike.png" id="3_a461w"]
 [ext_resource type="Texture2D" uid="uid://bi1ttvssfe4bn" path="res://Assets/Patterns/Bars/Fishing_bar_fill.png" id="3_qdkb4"]
 [ext_resource type="Script" uid="uid://5tm68p4jntug" path="res://Minigame/fishing_target.gd" id="4_spu5d"]
 [ext_resource type="Script" uid="uid://od8lta8xsb47" path="res://Minigame/Bar_movement.gd" id="5_0kedh"]
-[ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/HOOK!.png" id="6_i0p6e"]
+[ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/Banners/HOOK!.png" id="6_i0p6e"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
 [ext_resource type="Texture2D" uid="uid://cic0evj1yas4h" path="res://Assets/CuttingBoard.png" id="7_y001a"]
-[ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/CAUGHT.png" id="8_vktwq"]
-[ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/TO BAD!.png" id="9_a461w"]
+[ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/Banners/CAUGHT.png" id="8_vktwq"]
+[ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/Banners/TO BAD!.png" id="9_a461w"]
 [ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://Minigame/difficulty_manager.gd" id="10_c43qd"]
 [ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://Minigame/scenes/enemy_fish_spawner.tscn" id="10_di3fb"]
-
-[sub_resource type="Resource" id="Resource_y001a"]
-script = ExtResource("2_g71rd")
-fishName = "TestFish"
-fishRarity = 2
-fishMoves = 4
-texture = ExtResource("3_a461w")
-length = 20.0
-girth = 20.0
-weight = 20.0
-metadata/_custom_type_script = "uid://crt5mth27sk6e"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i7cv"]
 size = Vector2(308, 36)
@@ -39,12 +26,15 @@ size = Vector2(80, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_di3fb"]
 size = Vector2(16, 6)
 
-[node name="FishingGame" type="Node2D" unique_id=1407624943 groups=["GameManager"]]
+[node name="FishingGame" type="Node2D" unique_id=1407624943 node_paths=PackedStringArray("bannerDisplay") groups=["GameManager"]]
 position = Vector2(320, 400)
 script = ExtResource("1_0kedh")
 fishingGameMusic = ExtResource("2_4nmv5")
 successSong = ExtResource("3_0kq34")
-fish = SubResource("Resource_y001a")
+bannerDisplay = NodePath("UI_container/BannerWordDisplay")
+BANNER_HOOK = ExtResource("6_i0p6e")
+BANNER_CAUGHT = ExtResource("8_vktwq")
+BANNER_MISS = ExtResource("9_a461w")
 
 [node name="UI_container" type="Node2D" parent="." unique_id=1749612361]
 
@@ -88,6 +78,20 @@ texture = ExtResource("8_vktwq")
 visible = false
 position = Vector2(0, -200)
 texture = ExtResource("9_a461w")
+
+[node name="BannerWordDisplay" type="TextureRect" parent="UI_container" unique_id=1012944666]
+custom_minimum_size = Vector2(376, 160)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -80.0
+offset_right = 188.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="UI_container" unique_id=1226436023]
 visible = false
@@ -200,6 +204,9 @@ position = Vector2(407, -251)
 target_node = NodePath("../../Fishing_bar_outside")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=919268266]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1699633147]
+position = Vector2(0, -159)
 
 [connection signal="fish_caught" from="." to="Fishing_bar_outside/Fishing_target" method="_on_fishing_game_fish_caught"]
 [connection signal="fish_caught" from="." to="Difficulty_manager" method="_on_fishing_game_fish_caught"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgn0cle3ehn8j"
-path="res://.godot/imported/CAUGHT.png-37ec05a102c64aea192ef0741828590e.ctex"
+uid="uid://bn3ve6rraadbe"
+path="res://.godot/imported/HOOK!.png-5fe9b988e44aff007e16c031cb91b8bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CAUGHT.png"
-dest_files=["res://.godot/imported/CAUGHT.png-37ec05a102c64aea192ef0741828590e.ctex"]
+source_file="res://Assets/Banners/HOOK!.png"
+dest_files=["res://.godot/imported/HOOK!.png-5fe9b988e44aff007e16c031cb91b8bb.ctex"]
 
 [params]
 
