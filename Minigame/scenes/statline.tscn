@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cmorgi2eiv34j"]
+
+[ext_resource type="Script" uid="uid://bx80nhbidcanr" path="res://Minigame/scenes/statline.gd" id="1_mexd4"]
+
+[node name="Statline" type="PanelContainer" unique_id=1193347570]
+custom_minimum_size = Vector2(0, 36)
+script = ExtResource("1_mexd4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1699962313]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Stat" type="RichTextLabel" parent="MarginContainer" unique_id=1685619189]
+layout_mode = 2
+text = "Girth : 5.0"
+horizontal_alignment = 1
+vertical_alignment = 1

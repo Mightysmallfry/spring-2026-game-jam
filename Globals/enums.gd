@@ -9,6 +9,16 @@ enum FishRarity {
 	MYSTERIOUS
 }
 
+const RARITY_NAMES = {
+	FishRarity.COMMON : "Common",
+	FishRarity.UNCOMMON : "Uncommon",
+	FishRarity.RARE : "Rare",
+	FishRarity.LEGENDARY : "Legendary",
+	FishRarity.GODLY : "Godly",
+	FishRarity.MYSTERIOUS : "???",
+	
+}
+
 enum FishModifier{
 	DREAM = 1 << 0,    #1
 	ARID = 1 << 1,     #2

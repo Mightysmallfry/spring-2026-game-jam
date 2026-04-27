@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/Banners/HOOK!.png" id="6_i0p6e"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
-[ext_resource type="Texture2D" uid="uid://cic0evj1yas4h" path="res://Assets/CuttingBoard.png" id="7_y001a"]
 [ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/Banners/CAUGHT.png" id="8_vktwq"]
 [ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/Banners/TO BAD!.png" id="9_a461w"]
 [ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://Minigame/difficulty_manager.gd" id="10_c43qd"]
 [ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://Minigame/scenes/enemy_fish_spawner.tscn" id="10_di3fb"]
+[ext_resource type="PackedScene" uid="uid://bn60514k7fbcl" path="res://Minigame/scenes/cutting_board.tscn" id="17_mmwe8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i7cv"]
 size = Vector2(308, 36)
@@ -31,7 +31,7 @@ position = Vector2(320, 400)
 script = ExtResource("1_0kedh")
 fishingGameMusic = ExtResource("2_4nmv5")
 successSong = ExtResource("3_0kq34")
-bannerDisplay = NodePath("UI_container/BannerWordDisplay")
+bannerDisplay = NodePath("GuiLayer/BannerWordDisplay")
 BANNER_HOOK = ExtResource("6_i0p6e")
 BANNER_CAUGHT = ExtResource("8_vktwq")
 BANNER_MISS = ExtResource("9_a461w")
@@ -54,81 +54,6 @@ texture_under = ExtResource("6_spu5d")
 texture_progress = ExtResource("7_md58f")
 tint_progress = Color(0.23137255, 1, 0.32941177, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="Hook" type="Sprite2D" parent="UI_container" unique_id=1719544583]
-visible = false
-position = Vector2(0, -200)
-texture = ExtResource("6_i0p6e")
-
-[node name="ChoppingBlock" type="Sprite2D" parent="UI_container" unique_id=877536555]
-visible = false
-position = Vector2(0, -200)
-texture = ExtResource("7_y001a")
-
-[node name="PotentialFish" type="Sprite2D" parent="UI_container" unique_id=88231319]
-visible = false
-position = Vector2(-5, -200)
-
-[node name="CAUGHT" type="Sprite2D" parent="UI_container" unique_id=682002029]
-visible = false
-position = Vector2(0, -200)
-texture = ExtResource("8_vktwq")
-
-[node name="To_Bad" type="Sprite2D" parent="UI_container" unique_id=22124615]
-visible = false
-position = Vector2(0, -200)
-texture = ExtResource("9_a461w")
-
-[node name="BannerWordDisplay" type="TextureRect" parent="UI_container" unique_id=1012944666]
-custom_minimum_size = Vector2(376, 160)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = -80.0
-offset_right = 188.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="UI_container" unique_id=1226436023]
-visible = false
-offset_left = -168.0
-offset_top = -80.0
-offset_right = 170.0
-offset_bottom = 68.0
-mouse_filter = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI_container/Panel" unique_id=211633954]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -66.5
-offset_right = 162.0
-offset_bottom = 64.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Weight" type="Label" parent="UI_container/Panel/VBoxContainer" unique_id=864703995]
-layout_mode = 2
-
-[node name="Name" type="Label" parent="UI_container/Panel/VBoxContainer" unique_id=734997582]
-layout_mode = 2
-
-[node name="Length" type="Label" parent="UI_container/Panel/VBoxContainer" unique_id=1771284906]
-layout_mode = 2
-
-[node name="Girth" type="Label" parent="UI_container/Panel/VBoxContainer" unique_id=1171000316]
-layout_mode = 2
-
-[node name="Rarity" type="Label" parent="UI_container/Panel/VBoxContainer" unique_id=843634827]
-layout_mode = 2
 
 [node name="Fishing_bar_outside" type="Sprite2D" parent="." unique_id=1160197251]
 position = Vector2(0, -6)
@@ -207,6 +132,27 @@ target_node = NodePath("../../Fishing_bar_outside")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1699633147]
 position = Vector2(0, -159)
+
+[node name="GuiLayer" type="CanvasLayer" parent="." unique_id=731578483]
+
+[node name="BannerWordDisplay" type="TextureRect" parent="GuiLayer" unique_id=1012944666]
+texture_filter = 1
+custom_minimum_size = Vector2(376, 160)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -120.0
+offset_right = 188.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CuttingBoard" parent="GuiLayer" unique_id=928888108 instance=ExtResource("17_mmwe8")]
+texture_filter = 1
 
 [connection signal="fish_caught" from="." to="Fishing_bar_outside/Fishing_target" method="_on_fishing_game_fish_caught"]
 [connection signal="fish_caught" from="." to="Difficulty_manager" method="_on_fishing_game_fish_caught"]

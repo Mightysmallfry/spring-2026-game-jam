@@ -15,10 +15,12 @@ var MainGamePath : String = "res://World/Scenes/TestWorld.tscn"
 @export var BANNER_HOOK : Texture
 @export var BANNER_CAUGHT : Texture
 @export var BANNER_MISS : Texture
+var bannerLocation : Vector2 = Vector2(132, 120)
 
 @onready var root_ui : Node2D = $UI_container
 @onready var catch_area : Sprite2D = $Fishing_bar_outside/Fishing_target
 @onready var progressBar : TextureProgressBar = %TextureProgressBar
+@onready var cuttingBoard : CuttingBoardDisplay = $GuiLayer/CuttingBoard
 
 var currentFish : FishData
 var fish_in_bar = false
@@ -78,12 +80,15 @@ func _physics_process(delta: float):
 			_engorge_ui(bannerDisplay, 1.05,_hook_window/4)
 			_shake(bannerDisplay,3.0,_hook_window/4)
 			#HOOK WINDOW, SHOW TEXT
+			bannerDisplay.set_position(bannerLocation)
 			if _hook_window <= 0.0:
 				bannerDisplay.visible = false
 				_fail("Too slow")
 			elif Input.is_action_just_pressed("fish"):
 				bannerDisplay.visible = false
 				_on_hook()
+			
+			bannerDisplay.set_position(bannerLocation)
 		STATE.PLAY:
 			if fish_in_bar:
 				_progress_val += BASE_PROGRESS_GAIN * delta
@@ -103,6 +108,7 @@ func _physics_process(delta: float):
 			if not _end_screen_shown:
 				_end_screen_shown = true
 				_clean_fishing_minigame_for_display()
+				bannerDisplay.set_position(bannerLocation)
 				if _fishing_succeded:
 					bannerDisplay.texture = BANNER_CAUGHT
 					bannerDisplay.visible = true
@@ -114,7 +120,9 @@ func _physics_process(delta: float):
 					bannerDisplay.visible = false
 					Global.audio_manager.play_music(successSong)
 					await get_tree().create_timer(1.0).timeout
-					_display_fish() # Show the fish stats/sprite
+					# _display_fish() # Show the fish stats/sprite
+					cuttingBoard.display_fish(currentFish)
+					_flashbang(cuttingBoard,0.5)
 					_state = STATE.RESULTS
 					
 				else:
@@ -190,10 +198,6 @@ func _fail(_why: String):
 	$Fishing_bar_outside.visible = false
 	progressBar.visible = false
 	fishing_finished.emit(_fishing_succeded, currentFish)
-	#the game should be paused as soon as you get the signl
-	#_distroy_game()
-	#await get_tree().create_timer(0.2).timeout
-	#emit_signal("fishing_finished",false,fish)
 	
 func _deactivate_game():
 	set_physics_process(false)
@@ -247,40 +251,6 @@ func _clean_fishing_minigame_for_display():
 	$Fishing_bar_outside.visible = false
 	progressBar.visible = false
 	
-func _display_fish():
-	var fishSprite = $UI_container/PotentialFish
-	var choppingblock = $UI_container/ChoppingBlock
-	var vbox = $UI_container/Panel/VBoxContainer
-	var panel = $UI_container/Panel
-	panel.visible = true
-	vbox.get_node("Name").text = "Name: " + currentFish.fishName
-	var rarity_name = Enums.FishRarity.keys()[currentFish.fishRarity]
-	vbox.get_node("Rarity").text = "Rarity: " + rarity_name
-	
-	var display_weight = snapped(currentFish.weight + randf_range(-1.5, 1.5), 0.01)
-	vbox.get_node("Weight").text = "Weight: " + str(display_weight)
-	
-	var display_girth = snapped(currentFish.girth + randf_range(-1.5, 1.5), 0.01)
-	vbox.get_node("Girth").text = "Girth: " + str(display_girth)
-	
-	var display_length = snapped(currentFish.length + randf_range(-1.5, 1.5), 0.01)
-	vbox.get_node("Length").text = "Length: " + str(display_length)
-	
-	_flashbang(vbox,0.5)
-	
-	fishSprite.texture = currentFish.texture
-	choppingblock.visible = true
-	
-	fishSprite.visible = true
-	fishSprite.modulate.a = 0
-	fishSprite.scale = Vector2.ZERO
-	
-	var tween = get_tree().create_tween()
-	
-	tween.set_parallel(true)
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.set_ease(Tween.EASE_OUT)
-	
-	tween.tween_property(fishSprite, "scale",Vector2.ONE,0.4)
-	tween.tween_property(fishSprite, "modulate:a",1.0,0.3)
+
+
 	
