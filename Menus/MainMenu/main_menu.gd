@@ -9,8 +9,6 @@ func _ready() -> void:
 	Global.audio_manager.play_music(mainMenuMusic, mainMenuAudioFadeDuration)
 
 func _on_start_button_pressed() -> void:
-	# If we have audio for the main game we can remove thissd
-	# Since playing different audio will also fade out the current audio
 	Global.audio_manager.fade_out()
 	print("start pressed")
 	await Global.game_manager.change_2d_scene("res://World/Scenes/TestWorld.tscn")
@@ -20,10 +18,7 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_settings_button_pressed() -> void:
-	
-	#TODO: Something is wrong with changing scene, beware the debug menu
 	Global.game_manager.change_gui_scene("res://Menus/Settings/settings_menu.tscn", true, false)
-
 
 func _on_credits_button_pressed() -> void:
 	Global.audio_manager.pause_music()

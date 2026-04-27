@@ -20,9 +20,9 @@ func add_stat(statName : String, value) -> void:
 		stat = statlineScene.instantiate() as Statline
 		statList.add_child(stat)
 		stat.name = statName
-		stat.statTextBox.text = stat.name + " : " + str(value)
+		stat.statTextBox.set_dialog(stat.name + " : " + str(value))
 	elif visible: 
-		stat.statTextBox.text = statName + " : " + str(value)
+		stat.statTextBox.set_dialog(stat.name + " : " + str(value))
 
 
 func display_fish(currentFish : FishData) -> void:

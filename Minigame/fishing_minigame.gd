@@ -22,7 +22,8 @@ var bannerLocation : Vector2 = Vector2(132, 120)
 @onready var progressBar : TextureProgressBar = %TextureProgressBar
 @onready var cuttingBoard : CuttingBoardDisplay = $GuiLayer/CuttingBoard
 
-var currentFish : FishData
+@export_category("Test Fish")
+@export var currentFish : FishData
 var fish_in_bar = false
 
 const BASE_HOOK_WINDOW := 0.6
@@ -51,11 +52,11 @@ func _on_target_area_2d_body_exited(body: Node2D) -> void:
 
 func _ready():
 	Global.audio_manager.play_music(fishingGameMusic)
-	
-	currentFish = FishBucket.get_random_fish()
-	if !currentFish:
-		push_warning("FishingMinigame requires passing in a fish to play")
-		return
+	if !currentFish:	
+		currentFish = FishBucket.get_random_fish()
+		if !currentFish:
+			push_warning("FishingMinigame requires a valid fish to play")
+			return
 	$Difficulty_manager.dificulty = currentFish.fishRarity
 	
 func _physics_process(delta: float):

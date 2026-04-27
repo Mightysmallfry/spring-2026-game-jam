@@ -11,11 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://bn3ve6rraadbe" path="res://Assets/Banners/HOOK!.png" id="6_i0p6e"]
 [ext_resource type="Texture2D" uid="uid://bteq3oq8vpomk" path="res://Assets/Patterns/Bars/BarOver.png" id="6_spu5d"]
 [ext_resource type="Texture2D" uid="uid://fppsqa2x3tel" path="res://Assets/Patterns/Bars/BarFill.png" id="7_md58f"]
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="7_tykjn"]
+[ext_resource type="Texture2D" uid="uid://c54dc2t4yuxf3" path="res://Fish/Assets/cod.png" id="8_t7oyq"]
 [ext_resource type="Texture2D" uid="uid://cgn0cle3ehn8j" path="res://Assets/Banners/CAUGHT.png" id="8_vktwq"]
 [ext_resource type="Texture2D" uid="uid://fiicvr5v65h8" path="res://Assets/Banners/TO BAD!.png" id="9_a461w"]
 [ext_resource type="Script" uid="uid://bb1tqx4r56mru" path="res://Minigame/difficulty_manager.gd" id="10_c43qd"]
 [ext_resource type="PackedScene" uid="uid://ul3l6r7y4w77" path="res://Minigame/scenes/enemy_fish_spawner.tscn" id="10_di3fb"]
 [ext_resource type="PackedScene" uid="uid://bn60514k7fbcl" path="res://Minigame/scenes/cutting_board.tscn" id="17_mmwe8"]
+
+[sub_resource type="Resource" id="Resource_teh40"]
+script = ExtResource("7_tykjn")
+fishName = "Cod"
+texture = ExtResource("8_t7oyq")
+length = 1.0
+girth = 23.0
+weight = 4.0
+metadata/_custom_type_script = "uid://crt5mth27sk6e"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i7cv"]
 size = Vector2(308, 36)
@@ -35,25 +46,25 @@ bannerDisplay = NodePath("GuiLayer/BannerWordDisplay")
 BANNER_HOOK = ExtResource("6_i0p6e")
 BANNER_CAUGHT = ExtResource("8_vktwq")
 BANNER_MISS = ExtResource("9_a461w")
+currentFish = SubResource("Resource_teh40")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1164694314]
+layer = -10
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer" unique_id=1319654489]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.3553801, 0.8226499, 1)
 
 [node name="UI_container" type="Node2D" parent="." unique_id=1749612361]
 
 [node name="Progress_bar_outside" type="Sprite2D" parent="UI_container" unique_id=439647644]
 
 [node name="Progress_bar_fill" type="Sprite2D" parent="UI_container" unique_id=1839480237]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI_container" unique_id=1283526135]
-unique_name_in_owner = true
-texture_filter = 1
-offset_left = 183.0
-offset_right = 199.0
-offset_bottom = 16.0
-scale = Vector2(4, 4)
-fill_mode = 4
-texture_under = ExtResource("6_spu5d")
-texture_progress = ExtResource("7_md58f")
-tint_progress = Color(0.23137255, 1, 0.32941177, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="Fishing_bar_outside" type="Sprite2D" parent="." unique_id=1160197251]
 position = Vector2(0, -6)
@@ -150,9 +161,25 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CuttingBoard" parent="GuiLayer" unique_id=928888108 instance=ExtResource("17_mmwe8")]
+visible = false
 texture_filter = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GuiLayer" unique_id=1283526135]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 503.0
+offset_top = 400.0
+offset_right = 519.0
+offset_bottom = 416.0
+scale = Vector2(4, 4)
+fill_mode = 4
+texture_under = ExtResource("6_spu5d")
+texture_progress = ExtResource("7_md58f")
+tint_progress = Color(0.97299737, 0.41496792, 0.06525564, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="fish_caught" from="." to="Fishing_bar_outside/Fishing_target" method="_on_fishing_game_fish_caught"]
 [connection signal="fish_caught" from="." to="Difficulty_manager" method="_on_fishing_game_fish_caught"]

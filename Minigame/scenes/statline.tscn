@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cmorgi2eiv34j"]
 
 [ext_resource type="Script" uid="uid://bx80nhbidcanr" path="res://Minigame/scenes/statline.gd" id="1_mexd4"]
+[ext_resource type="Script" uid="uid://cvl82lkkdti04" path="res://Minigame/scenes/stat.gd" id="2_0owvs"]
 
 [node name="Statline" type="PanelContainer" unique_id=1193347570]
 custom_minimum_size = Vector2(0, 36)
@@ -14,7 +15,9 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="Stat" type="RichTextLabel" parent="MarginContainer" unique_id=1685619189]
+custom_minimum_size = Vector2(120, 24)
 layout_mode = 2
 text = "Girth : 5.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("2_0owvs")
