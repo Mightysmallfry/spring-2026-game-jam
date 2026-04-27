@@ -4,6 +4,7 @@ class_name TileMapManager
 
 @export var water_layer: TileMapLayer
 @export var tile_size: Vector2 = Vector2(64, 32)
+@onready var player = $"../Player"
 
 var fishMinigamePath : String = "res://World/Scenes/fishing_minigame.tscn"
 
@@ -83,5 +84,6 @@ func _on_player_exited_border(body: Node2D) -> void:
 		
 func interact() -> void:
 	print("interacted with water!")
+	Global.last_player_location = player.global_position
 	Global.game_manager.change_2d_scene(fishMinigamePath, false, false)
 	

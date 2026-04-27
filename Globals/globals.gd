@@ -12,6 +12,8 @@ var pause_menu : PauseMenu
 var tile_map_manager : TileMapManager
 var tile_map_terrain_manager : TileMapTerrainManager
 
+var last_player_location : Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
