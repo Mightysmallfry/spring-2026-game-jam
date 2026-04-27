@@ -21,17 +21,11 @@ const RARITY_WEIGHTS = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_fish_pool = _load_and_cach_fish(FISH_DIR)
+	_fish_pool = _load_and_cache_fish(FISH_DIR)
 	_calculate_pool_weight()
 	print("Fish Data Loaded: ", _fish_pool.size(), "fish ready.")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _load_and_cach_fish(dirPath : String) -> Array[FishData]:
-	
+func _load_and_cache_fish(dirPath : String) -> Array[FishData]:
 	#Because we need to access qualities of fish to choose a rondom one, we need to have the fish preloaded.
 	#its a relitivly small cost in memory for a good cpu gain expessially becaue the fish are just few Strings and a sprite
 	var pool : Array[FishData] = []
@@ -57,8 +51,8 @@ func _load_and_cach_fish(dirPath : String) -> Array[FishData]:
 	
 func _calculate_pool_weight():
 	_total_weight = 0.0
-	for f in _fish_pool:
-		_total_weight += RARITY_WEIGHTS.get(f.fishRarity,1)
+	for fish in _fish_pool:
+		_total_weight += RARITY_WEIGHTS.get(fish.fishRarity,1)
 	
 func get_random_fish() -> FishData:
 	if _fish_pool.is_empty(): return null
@@ -66,10 +60,10 @@ func get_random_fish() -> FishData:
 	var roll = randf() * _total_weight
 	var cursor = 0.0
 	
-	for f in _fish_pool:
-		cursor += RARITY_WEIGHTS.get(f.fishRarity,1)
+	for fish in _fish_pool:
+		cursor += RARITY_WEIGHTS.get(fish.fishRarity,1)
 		if roll <= cursor:
-			return f
+			return fish
 	return _fish_pool.back()
 	
 func _pick_weighted_fish(sub_pool: Array[FishData]) -> FishData:
@@ -79,18 +73,18 @@ func _pick_weighted_fish(sub_pool: Array[FishData]) -> FishData:
 	var roll = randf() * total_weight
 	var current_sum = 0.0
 	
-	for f in sub_pool:
-		current_sum += RARITY_WEIGHTS[f.fishRarity]
+	for fish in sub_pool:
+		current_sum += RARITY_WEIGHTS[fish.fishRarity]
 		if roll <= current_sum:
-			return f
+			return fish
 	return sub_pool.back()
 	
 func get_random_fish_for_region(target_region : Enums.FishModifier) -> FishData:
 	var valid_fish: Array[FishData] = []
 	
-	for f in _fish_pool:
-		if target_region in f.fishModifiers:
-			valid_fish.append(f)
+	for fish in _fish_pool:
+		if target_region in fish.fishModifiers:
+			valid_fish.append(fish)
 		
 	if valid_fish.is_empty():
 		push_warning("No Fish found for region: ", Enums.FishModifier.keys()[target_region])

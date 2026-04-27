@@ -25,6 +25,7 @@ Global="*res://Globals/globals.gd"
 Progression="*res://Globals/progression.gd"
 Enums="*res://Globals/enums.gd"
 SignalBus="*uid://drcnxovpyi664"
+FishBucket="*uid://d2p5utkyh7mpe"
 
 [display]
 
