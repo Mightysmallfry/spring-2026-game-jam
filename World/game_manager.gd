@@ -59,10 +59,11 @@ func change_gui_scene(next_scene_path : String, delete : bool = true, keep_runni
 			gui.remove_child(current_gui)
 	
 	Global.transition_manager.transition_fade_in()
-	var new_scene = load(next_scene_path).instantiate();
-	gui.add_child(new_scene)
-	current_gui = new_scene
-	current_gui.mouse_filter = Control.MOUSE_FILTER_PASS
+	if (next_scene_path != ""):
+		var new_scene = load(next_scene_path).instantiate();
+		gui.add_child(new_scene)
+		current_gui = new_scene
+		current_gui.mouse_filter = Control.MOUSE_FILTER_PASS
 	
 func reload_current_world_3d() -> void:
 	if current_world_3d == null:

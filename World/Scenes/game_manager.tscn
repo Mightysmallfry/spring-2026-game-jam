@@ -27,6 +27,7 @@ script = ExtResource("2_yokom")
 [node name="World_2d" type="Node2D" parent="." unique_id=988812913]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="World_2d" unique_id=1844830141]
+process_mode = 3
 material = SubResource("ShaderMaterial_maolr")
 offset_right = 512.0
 offset_bottom = 512.0
@@ -52,15 +53,14 @@ offset_left = 0.0
 offset_right = 0.0
 mouse_filter = 1
 
-[node name="PauseMenu" parent="Gui" unique_id=1632956484 instance=ExtResource("6_ap7kh")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
 [node name="TransitionManager" parent="." unique_id=1056860372 instance=ExtResource("5_ccgei")]
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=374288400]
 layer = 11
+
+[node name="PauseMenu" parent="DebugLayer" unique_id=1632956484 instance=ExtResource("6_ap7kh")]
+process_mode = 3
+visible = false
 
 [node name="DebugMenu" parent="DebugLayer" unique_id=937916825 instance=ExtResource("2_oq6yk")]
 visible = false

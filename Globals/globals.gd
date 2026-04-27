@@ -14,6 +14,8 @@ var tile_map_terrain_manager : TileMapTerrainManager
 
 var last_player_location : Vector2
 
+var player_locked : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

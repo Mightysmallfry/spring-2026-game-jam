@@ -85,5 +85,6 @@ func _on_player_exited_border(body: Node2D) -> void:
 func interact() -> void:
 	print("interacted with water!")
 	Global.last_player_location = player.global_position
-	Global.game_manager.change_2d_scene(fishMinigamePath, false, false)
+	Global.player_locked = true
+	Global.game_manager.change_gui_scene(fishMinigamePath, false, false)
 	
