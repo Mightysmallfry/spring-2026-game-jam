@@ -50,7 +50,6 @@ fish = SubResource("Resource_y001a")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="UI_container" unique_id=1283526135]
 unique_name_in_owner = true
-texture_filter = 1
 offset_left = 183.0
 offset_right = 199.0
 offset_bottom = 16.0
@@ -91,7 +90,6 @@ offset_left = -168.0
 offset_top = -80.0
 offset_right = 170.0
 offset_bottom = 68.0
-mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI_container/Panel" unique_id=211633954]
 layout_mode = 1

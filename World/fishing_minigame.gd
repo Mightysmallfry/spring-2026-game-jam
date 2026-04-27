@@ -5,7 +5,6 @@ extends Node2D
 #I dont know how we were thinking of doing this but we could check if the fishing minigame exists and it
 #it doesent we create it and if it does we call reset_for_new_fish()
 #it should be ready for integration!
-var MainGamePath : String = "res://World/Scenes/TestWorld.tscn"
 
 @onready var root_ui: Node2D = $UI_container
 @onready var catch_area: Sprite2D = $Fishing_bar_outside/Fishing_target
@@ -39,15 +38,6 @@ func _on_target_area_2d_body_exited(body: Node2D) -> void:
 signal fishing_finished(success : bool, fish : FishData)
 
 signal fish_caught(fish : FishData) #the pattern is for the movement type from the fish
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		print("Input reached: ", name)
-		
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		print("Unhandled Input reached: ", name)
-
 
 func _ready():
 	if not fish:
@@ -119,8 +109,7 @@ func _physics_process(delta: float):
 					await get_tree().create_timer(1.0).timeout
 					to_Bad.visible = false
 					_fail("failed to catch")
-					Global.game_manager.change_2d_scene(MainGamePath, false, false)
-
+					
 		STATE.RESULTS: #Show STATS!
 			if Input.is_action_just_pressed("fish"):
 				fishing_finished.emit(_fishing_succeded,fish)
@@ -213,6 +202,7 @@ func reset_for_new_fish(new_fish_data : FishData):
 	#wake
 	set_physics_process(true)
 	self.show()
+	
 	
 func _engorge_ui(node: Node, scale_to: float, time: float):
 	var t: = create_tween()
