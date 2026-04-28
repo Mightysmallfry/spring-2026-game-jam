@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dckrcuyrve1iq"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_0ewg7"]
+[ext_resource type="Texture2D" uid="uid://ea3twh4dtkav" path="res://Fish/Assets/Cod Finshnets.png" id="2_8alv1"]
+
+[resource]
+script = ExtResource("1_0ewg7")
+fishName = "Emo Cod"
+fishRarity = 1
+texture = ExtResource("2_8alv1")
+length = 63.1
+girth = 26.1
+weight = 12.8
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

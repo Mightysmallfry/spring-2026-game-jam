@@ -6,7 +6,9 @@
 [ext_resource type="Shader" uid="uid://taoio1upqgsx" path="res://Menus/MainMenu/main_menu_pattern.gdshader" id="1_wotb1"]
 [ext_resource type="AudioStream" uid="uid://i5h32xsxba6a" path="res://Audio/music/lightyeartraxx-kim-lightyear-legends-109307.mp3" id="2_y4ryc"]
 [ext_resource type="AudioStream" uid="uid://bo8vocor510od" path="res://Audio/music/delon_boomkin-thug-life-music-2-461148.mp3" id="3_7f67a"]
+[ext_resource type="Texture2D" uid="uid://bwva37p47b46q" path="res://Fish/Assets/Menu Screen.png" id="5_c3tdx"]
 [ext_resource type="Texture2D" uid="uid://cuelbhptv5k7f" path="res://Assets/Menus/CrabPatchMenu.png" id="6_lkur8"]
+[ext_resource type="Texture2D" uid="uid://daqq6oidhmfsv" path="res://Assets/Menus/Menu.png" id="9_pxofw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qq57v"]
 shader = ExtResource("1_wotb1")
@@ -37,7 +39,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21957067, 0.42088038, 0.648827, 1)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=971493799]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_c3tdx")
+
 [node name="BackgroundPattern" type="TextureRect" parent="." unique_id=1913307116]
+visible = false
 texture_repeat = 2
 material = SubResource("ShaderMaterial_qq57v")
 layout_mode = 1
@@ -88,9 +97,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 54.0
-offset_top = -254.0
-offset_right = 192.0
+offset_left = 26.0
+offset_top = -282.0
+offset_right = 199.0
 offset_bottom = -74.0
 grow_vertical = 0
 theme_override_constants/margin_left = 4
@@ -98,33 +107,53 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ButtonVList" type="VBoxContainer" parent="ButtonContainer" unique_id=162455461]
+[node name="NinePatchRect" type="NinePatchRect" parent="ButtonContainer" unique_id=1362616448]
 layout_mode = 2
+texture = ExtResource("9_pxofw")
+region_rect = Rect2(-0.22589874, 0.23751831, 96.4276, 95.578186)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
-[node name="StartButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=1631488980]
+[node name="ButtonVList" type="VBoxContainer" parent="ButtonContainer/NinePatchRect" unique_id=162455461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -86.0
+offset_right = 65.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="ButtonContainer/NinePatchRect/ButtonVList" unique_id=1631488980]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
-[node name="SettingsButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=869813819]
+[node name="SettingsButton" type="Button" parent="ButtonContainer/NinePatchRect/ButtonVList" unique_id=869813819]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Settings
 "
 
-[node name="CreditsButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=1703001226]
+[node name="CreditsButton" type="Button" parent="ButtonContainer/NinePatchRect/ButtonVList" unique_id=1703001226]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Credits
 "
 
-[node name="QuitButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=119089275]
+[node name="QuitButton" type="Button" parent="ButtonContainer/NinePatchRect/ButtonVList" unique_id=119089275]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
 
-[connection signal="pressed" from="ButtonContainer/ButtonVList/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/ButtonVList/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/ButtonVList/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/ButtonVList/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/NinePatchRect/ButtonVList/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/NinePatchRect/ButtonVList/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/NinePatchRect/ButtonVList/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/NinePatchRect/ButtonVList/QuitButton" to="." method="_on_quit_button_pressed"]
