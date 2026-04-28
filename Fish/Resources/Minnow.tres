@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dui6tiylfgr3m"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_gvuk8"]
+[ext_resource type="Texture2D" uid="uid://cf08vwojbh3nr" path="res://Fish/Assets/minnow.png" id="2_3kg8n"]
+
+[resource]
+script = ExtResource("1_gvuk8")
+fishName = "Minnow"
+fishMoves = 3
+texture = ExtResource("2_3kg8n")
+length = 7.3
+girth = 2.5
+weight = 0.016
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

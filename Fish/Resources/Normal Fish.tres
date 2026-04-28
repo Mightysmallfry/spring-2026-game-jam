@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bxjcwwxvr06on"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_ckif6"]
+[ext_resource type="Texture2D" uid="uid://b1i2fqlc2ftsc" path="res://Fish/Assets/Normal Fish.png" id="2_rubde"]
+
+[resource]
+script = ExtResource("1_ckif6")
+fishName = "Normal Fish"
+fishRarity = 4
+fishMoves = 1
+texture = ExtResource("2_rubde")
+length = 182.99
+girth = 45.8
+weight = 81.64
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

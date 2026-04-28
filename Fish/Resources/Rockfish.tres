@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bcs8mdt6jilag"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_ur8qx"]
+[ext_resource type="Texture2D" uid="uid://b6w6wdbuy0cvg" path="res://Fish/Assets/Rockfish.png" id="2_n8i33"]
+
+[resource]
+script = ExtResource("1_ur8qx")
+fishName = "Rockfish"
+fishRarity = 2
+fishMoves = 1
+texture = ExtResource("2_n8i33")
+length = 74.1
+girth = 22.4
+weight = 2.1
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

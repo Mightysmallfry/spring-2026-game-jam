@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dlv6qrl3l44ba"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_qppvf"]
+[ext_resource type="Texture2D" uid="uid://b1xtl1f43abq0" path="res://Fish/Assets/Yellow Perch.png" id="2_0bnpr"]
+
+[resource]
+script = ExtResource("1_qppvf")
+fishName = "Yellow Perch"
+fishMoves = 5
+texture = ExtResource("2_0bnpr")
+length = 19.1
+girth = 5.32
+weight = 1.1
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://c02aylsinxesp"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_l61rf"]
+[ext_resource type="Texture2D" uid="uid://x6v4s4e8dhyo" path="res://Fish/Assets/Demon.png" id="2_r3wra"]
+
+[resource]
+script = ExtResource("1_l61rf")
+fishName = "Demon"
+fishRarity = 2
+fishMoves = 1
+texture = ExtResource("2_r3wra")
+length = 66.6
+girth = 6.66
+weight = 0.666
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

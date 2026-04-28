@@ -12,11 +12,11 @@ var _fish_pool : Array[FishData] = []
 var _total_weight : float = 0.0
 const RARITY_WEIGHTS = {
 	Enums.FishRarity.COMMON: 100,
-	Enums.FishRarity.UNCOMMON: 50,
-	Enums.FishRarity.RARE: 20,
-	Enums.FishRarity.LEGENDARY: 10,
-	Enums.FishRarity.GODLY: 5,
-	Enums.FishRarity.MYSTERIOUS: 2
+	Enums.FishRarity.UNCOMMON: 60,
+	Enums.FishRarity.RARE: 30,
+	Enums.FishRarity.LEGENDARY: 20,
+	Enums.FishRarity.GODLY: 10,
+	Enums.FishRarity.MYSTERIOUS: 5
 }
 
 # Called when the node enters the scene tree for the first time.

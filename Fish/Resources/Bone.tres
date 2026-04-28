@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://difv4td6wplox"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_3ewmb"]
+[ext_resource type="Texture2D" uid="uid://by81pwjdnebg8" path="res://Fish/Assets/BONE fish.png" id="2_p0dst"]
+
+[resource]
+script = ExtResource("1_3ewmb")
+fishName = "Bone"
+fishRarity = 1
+fishMoves = 5
+texture = ExtResource("2_p0dst")
+length = 48.2
+girth = 3.0
+weight = 0.317
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

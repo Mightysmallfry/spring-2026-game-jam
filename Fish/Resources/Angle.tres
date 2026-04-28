@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://ckm66jwlwmjr0"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_pagg1"]
+[ext_resource type="Texture2D" uid="uid://dn0qs7l23p4qk" path="res://Fish/Assets/Angle.png" id="2_vguur"]
+
+[resource]
+script = ExtResource("1_pagg1")
+fishName = "Angel"
+fishRarity = 3
+fishMoves = 3
+texture = ExtResource("2_vguur")
+length = 70.5
+girth = 30.2
+weight = 17.4
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

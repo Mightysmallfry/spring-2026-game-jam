@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bdhvpkqjq4s8x"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_nhujk"]
+[ext_resource type="Texture2D" uid="uid://dpu6iasf627d0" path="res://Fish/Assets/Herring.png" id="2_ngok1"]
+
+[resource]
+script = ExtResource("1_nhujk")
+fishName = "Herring"
+texture = ExtResource("2_ngok1")
+length = 27.1
+girth = 12.2
+weight = 0.5
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

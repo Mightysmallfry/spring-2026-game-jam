@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bkbd0rwfveif7"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_fbp08"]
+[ext_resource type="Texture2D" uid="uid://b678ikfhn5knr" path="res://Fish/Assets/Clownfish.png" id="2_5ivdl"]
+
+[resource]
+script = ExtResource("1_fbp08")
+fishName = "Clownfish"
+fishRarity = 1
+fishMoves = 2
+texture = ExtResource("2_5ivdl")
+length = 9.6
+girth = 2.7
+weight = 0.42
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cngvyanb1221d"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_uihbs"]
+[ext_resource type="Texture2D" uid="uid://cwwhfqe15jb5k" path="res://Fish/Assets/Rock Fish.png" id="2_1epsi"]
+
+[resource]
+script = ExtResource("1_uihbs")
+fishName = "Stone Fish"
+fishRarity = 3
+fishMoves = 5
+texture = ExtResource("2_1epsi")
+length = 73.1
+girth = 24.8
+weight = 1.5
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

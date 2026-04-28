@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bdk84giy1ymf5"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_vbdi2"]
+[ext_resource type="Texture2D" uid="uid://rp3imeb0ak1" path="res://Fish/Assets/Cavefish.png" id="2_7ycpl"]
+
+[resource]
+script = ExtResource("1_vbdi2")
+fishName = "Cave Fish"
+fishRarity = 4
+fishMoves = 4
+texture = ExtResource("2_7ycpl")
+length = 7.2
+girth = 3.0
+weight = 0.9
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

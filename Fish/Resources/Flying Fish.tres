@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://b2bxj2gftg2i3"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_38qvf"]
+[ext_resource type="Texture2D" uid="uid://bx6tpuerprf7t" path="res://Fish/Assets/Flying Fish.png" id="2_tnpfa"]
+
+[resource]
+script = ExtResource("1_38qvf")
+fishName = "Flying Fish"
+fishRarity = 4
+fishMoves = 3
+texture = ExtResource("2_tnpfa")
+length = 22.6
+girth = 6.7
+weight = 0.9
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://jt3dxm1jn65b"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_lk706"]
+[ext_resource type="Texture2D" uid="uid://bnk3bnsfjga5b" path="res://Fish/Assets/Black Crappie.png" id="2_2lj5s"]
+
+[resource]
+script = ExtResource("1_lk706")
+fishName = "Black Crappie"
+texture = ExtResource("2_2lj5s")
+length = 16.8
+girth = 7.4
+weight = 2.4699999999999998
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

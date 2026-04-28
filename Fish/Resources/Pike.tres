@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bq4xsf28phlm0"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_j0d1x"]
+[ext_resource type="Texture2D" uid="uid://dgrxc7pbw3h54" path="res://Fish/Assets/Pike.png" id="2_n1pkw"]
+
+[resource]
+script = ExtResource("1_j0d1x")
+fishName = "Pike"
+fishRarity = 1
+fishMoves = 4
+texture = ExtResource("2_n1pkw")
+length = 53.2
+girth = 9.5
+weight = 0.9
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

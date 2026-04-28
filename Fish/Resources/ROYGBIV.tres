@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cdl33fyvc7xm5"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_rpy01"]
+[ext_resource type="Texture2D" uid="uid://cjg5tpl7sfhm5" path="res://Fish/Assets/ROYGBIV.png" id="2_2hoyg"]
+
+[resource]
+script = ExtResource("1_rpy01")
+fishName = "ROYGBIV"
+fishRarity = 2
+fishMoves = 2
+texture = ExtResource("2_2hoyg")
+length = 25.0
+girth = 10.0
+weight = 10.0
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

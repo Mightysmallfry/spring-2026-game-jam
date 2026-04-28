@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dc3ervouqi4ib"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_jvxre"]
+[ext_resource type="Texture2D" uid="uid://bsddwjhtog3w5" path="res://Fish/Assets/Finantually litterite fish.png" id="2_ocqsu"]
+
+[resource]
+script = ExtResource("1_jvxre")
+fishName = "Fiscally Responsible Fish"
+fishMoves = 5
+texture = ExtResource("2_ocqsu")
+length = 13.8
+girth = 13.0
+weight = 3.2
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

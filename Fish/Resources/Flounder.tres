@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cp6lnir4yo3d4"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_ywx56"]
+[ext_resource type="Texture2D" uid="uid://cg6ux7fso3o4v" path="res://Fish/Assets/Flounder.png" id="2_af2b3"]
+
+[resource]
+script = ExtResource("1_ywx56")
+fishName = "Flounder"
+fishMoves = 3
+texture = ExtResource("2_af2b3")
+length = 70.4
+girth = 45.2
+weight = 2.6
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

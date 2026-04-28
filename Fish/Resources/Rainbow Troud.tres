@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://r18cnryyi2ea"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_avnbl"]
+[ext_resource type="Texture2D" uid="uid://bik63co1tg1vy" path="res://Fish/Assets/Rainbow Trout.png" id="2_32ylt"]
+
+[resource]
+script = ExtResource("1_avnbl")
+fishName = "Rainbow Trout"
+fishMoves = 2
+texture = ExtResource("2_32ylt")
+length = 12.5
+girth = 3.4
+weight = 0.8
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

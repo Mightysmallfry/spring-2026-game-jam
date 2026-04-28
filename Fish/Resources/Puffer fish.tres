@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cop4xv6f1gffp"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_vr0bt"]
+[ext_resource type="Texture2D" uid="uid://bstgipkctoxxw" path="res://Fish/Assets/Puffer.png" id="2_surdd"]
+
+[resource]
+script = ExtResource("1_vr0bt")
+fishName = "Puffer Fish"
+fishRarity = 3
+texture = ExtResource("2_surdd")
+length = 13.2
+girth = 13.2
+weight = 3.2
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

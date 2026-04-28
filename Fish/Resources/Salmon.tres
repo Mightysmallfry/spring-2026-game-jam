@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://xsl13csbrb87"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_8de5d"]
+[ext_resource type="Texture2D" uid="uid://bng6n6t8id58d" path="res://Fish/Assets/Salmon.png" id="2_4rnb1"]
+
+[resource]
+script = ExtResource("1_8de5d")
+fishName = "Salmon"
+fishRarity = 2
+fishMoves = 4
+texture = ExtResource("2_4rnb1")
+length = 88.8
+girth = 17.8
+weight = 13.2
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

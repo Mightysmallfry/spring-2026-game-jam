@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bb0oqclbd77w3"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_krped"]
+[ext_resource type="Texture2D" uid="uid://kr3u3h46vqkl" path="res://Fish/Assets/Tuna.png" id="2_885ym"]
+
+[resource]
+script = ExtResource("1_krped")
+fishName = "Tuna"
+fishRarity = 3
+fishMoves = 4
+texture = ExtResource("2_885ym")
+length = 264.8
+girth = 128.4
+weight = 234.6
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

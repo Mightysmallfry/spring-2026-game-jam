@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://crurifcm5iogo"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_hfjkx"]
+[ext_resource type="Texture2D" uid="uid://b8o1w6miqtlrv" path="res://Fish/Assets/Eel.png" id="2_ocghp"]
+
+[resource]
+script = ExtResource("1_hfjkx")
+fishName = "Eel"
+fishRarity = 1
+fishMoves = 4
+texture = ExtResource("2_ocghp")
+length = 60.24
+girth = 3.2
+weight = 6.8
+metadata/_custom_type_script = "uid://crt5mth27sk6e"
