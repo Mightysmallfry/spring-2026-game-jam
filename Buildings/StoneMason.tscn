@@ -22,7 +22,7 @@ polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 y_sort_enabled = true
 texture = ExtResource("2_bp105")
 
-[node name="CollisionArea" type="Area2D" parent="." unique_id=501574045]
+[node name="CollisionArea" type="StaticBody2D" parent="." unique_id=86498106]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea" unique_id=1497379361]
 polygon = PackedVector2Array(-32, 32, 0, 15, 24, 28, 41, 19, 0, -2, -49, 23)

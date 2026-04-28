@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2wxjfcmnqb7a"]
 
 [ext_resource type="Script" uid="uid://dvaghuoqnf4g0" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://do2rhcmalsle1" path="res://Assets/Banner.png" id="2_btcbx"]
+[ext_resource type="Texture2D" uid="uid://do2rhcmalsle1" path="res://Assets/Menus/Banner.png" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://bn04quaxpny55" path="res://Camera/SubpixelFollowCamera.gd" id="3_btcbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]

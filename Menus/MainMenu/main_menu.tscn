@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://dmg5rqup1xtul"]
 
 [ext_resource type="Texture2D" uid="uid://bdl1tdky08ub7" path="res://Assets/Patterns/PatternA.png" id="1_3e31c"]
+[ext_resource type="Theme" uid="uid://bqrlo85al5wxg" path="res://Assets/Fonts/MenuThemes.tres" id="1_o0cfa"]
 [ext_resource type="Script" uid="uid://cxgmoqr3oed81" path="res://Menus/MainMenu/main_menu.gd" id="1_qq57v"]
 [ext_resource type="Shader" uid="uid://taoio1upqgsx" path="res://Menus/MainMenu/main_menu_pattern.gdshader" id="1_wotb1"]
 [ext_resource type="AudioStream" uid="uid://i5h32xsxba6a" path="res://Audio/music/lightyeartraxx-kim-lightyear-legends-109307.mp3" id="2_y4ryc"]
 [ext_resource type="AudioStream" uid="uid://bo8vocor510od" path="res://Audio/music/delon_boomkin-thug-life-music-2-461148.mp3" id="3_7f67a"]
-[ext_resource type="Texture2D" uid="uid://daqq6oidhmfsv" path="res://Assets/Menu.png" id="6_lkur8"]
+[ext_resource type="Texture2D" uid="uid://cuelbhptv5k7f" path="res://Assets/Menus/CrabPatchMenu.png" id="6_lkur8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qq57v"]
 shader = ExtResource("1_wotb1")
@@ -22,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_o0cfa")
 script = ExtResource("1_qq57v")
 mainMenuMusic = ExtResource("2_y4ryc")
 CreditsMusic = ExtResource("3_7f67a")
@@ -59,6 +61,8 @@ patch_margin_left = 32
 patch_margin_top = 32
 patch_margin_right = 32
 patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="TitleContainer" type="MarginContainer" parent="TitleBackground" unique_id=2031055351]
 layout_mode = 0
@@ -100,6 +104,7 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=1631488980]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="ButtonContainer/ButtonVList" unique_id=869813819]
