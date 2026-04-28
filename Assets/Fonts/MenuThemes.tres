@@ -2,8 +2,12 @@
 
 [ext_resource type="FontFile" uid="uid://cb3u21k6x7jey" path="res://Assets/Fonts/AncientModernTales-a7Po.ttf" id="1_durui"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7njmf"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 0.5411765)
+
 [resource]
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_durui")
+Button/styles/normal = SubResource("StyleBoxFlat_7njmf")
 RichTextLabel/font_sizes/normal_font_size = 24
 RichTextLabel/fonts/normal_font = ExtResource("1_durui")
