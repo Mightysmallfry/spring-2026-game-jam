@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://ejibdf0e38rq"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_1nlpo"]
+[ext_resource type="Texture2D" uid="uid://cvyq8rksw3cqw" path="res://Fish/Assets/Carb.png" id="2_5ji43"]
+
+[resource]
+script = ExtResource("1_1nlpo")
+fishName = "Crab"
+fishRarity = 1
+fishMoves = 4
+texture = ExtResource("2_5ji43")
+length = 25.3
+girth = 12.7
+weight = 0.9
+metadata/_custom_type_script = "uid://crt5mth27sk6e"

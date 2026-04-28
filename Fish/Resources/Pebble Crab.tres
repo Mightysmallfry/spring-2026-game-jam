@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dioe3p1rc1jg"]
+
+[ext_resource type="Script" uid="uid://crt5mth27sk6e" path="res://Fish/fish_resource.gd" id="1_v0wgb"]
+[ext_resource type="Texture2D" uid="uid://dcess0jskc1es" path="res://Fish/Assets/Pebble Crab.png" id="2_brk78"]
+
+[resource]
+script = ExtResource("1_v0wgb")
+fishName = "Pebble Crab"
+fishRarity = 2
+texture = ExtResource("2_brk78")
+length = 30.4
+girth = 5.43
+weight = 0.4
+metadata/_custom_type_script = "uid://crt5mth27sk6e"
