@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://c2mj4hho2h3yd"]
 
 [ext_resource type="Script" uid="uid://d3yuag0il3d3r" path="res://Buildings/base_building.gd" id="1_fpopy"]
-[ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_2krsp"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fpopy"]
-radius = 13.038404
+[ext_resource type="Texture2D" uid="uid://cq0ovgfwa6av1" path="res://Assets/Buildings/WoodMan.png" id="2_fpopy"]
 
 [node name="BaseBuilding" type="Node2D" unique_id=701582952 node_paths=PackedStringArray("buildingSprite", "interactArea", "collisionArea")]
 y_sort_enabled = true
@@ -25,14 +22,10 @@ polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 [node name="BuildingSprite" type="Sprite2D" parent="." unique_id=1153005556]
 y_sort_enabled = true
 position = Vector2(0, -30)
-texture = ExtResource("2_2krsp")
+texture = ExtResource("2_fpopy")
 
 [node name="CollisionArea" type="StaticBody2D" parent="." unique_id=2038401549]
 position = Vector2(0, -30)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionArea" unique_id=1765308347]
-polygon = PackedVector2Array(-32, 32, 0, 15, 24, 28, 41, 19, 0, -2, -49, 23)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=1935989875]
-position = Vector2(0, 34)
-shape = SubResource("CircleShape2D_fpopy")
+polygon = PackedVector2Array(1, 51, 52, 24, 1, -2, -49, 23)

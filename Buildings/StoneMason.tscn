@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d03ssxqokrv1x"]
 
 [ext_resource type="Script" uid="uid://6n8kdle7ie2t" path="res://Buildings/stone_mason.gd" id="1_gupan"]
-[ext_resource type="Texture2D" uid="uid://dkkiw5l4vumxy" path="res://Assets/Buildings/StoneMason.png" id="2_bp105"]
+[ext_resource type="Texture2D" uid="uid://dwq400xh3s88w" path="res://Assets/Buildings/StoneMas.png" id="2_gupan"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpopy"]
 radius = 8.0
@@ -20,7 +20,7 @@ polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
 
 [node name="BuildingSprite" type="Sprite2D" parent="." unique_id=944327816]
 y_sort_enabled = true
-texture = ExtResource("2_bp105")
+texture = ExtResource("2_gupan")
 
 [node name="CollisionArea" type="StaticBody2D" parent="." unique_id=86498106]
 

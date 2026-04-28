@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ck3rwt41c4r77"]
 
 [ext_resource type="Script" uid="uid://dl4jt8bq2eexk" path="res://Buildings/fish_monger.gd" id="1_k2nvv"]
-[ext_resource type="Texture2D" uid="uid://snae560hfnx" path="res://Assets/Buildings/Fishmonger.png" id="2_k2nvv"]
+[ext_resource type="Texture2D" uid="uid://b2p0pi2501t8y" path="res://Assets/Buildings/Fishmong.png" id="2_k2nvv"]
 
 [node name="FishMonger" type="Node2D" unique_id=927949800 node_paths=PackedStringArray("buildingSprite", "interactArea", "collisionArea")]
 script = ExtResource("1_k2nvv")
