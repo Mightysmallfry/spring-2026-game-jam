@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 		interactionLabel.visible = false
 		
 	Global.debug_menu.add_property("CanInteract", canInteract, 10)
+	Global.debug_menu.add_property("interacting with", activeInteractions, 10)
 	
 	# The buildings will work with this interact
 	# Fishing will be separate

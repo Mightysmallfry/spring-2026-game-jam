@@ -11,6 +11,8 @@ collisionArea = NodePath("CollisionArea")
 buildingName = "Merchant"
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=2103630068]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea" unique_id=548267894]
 polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)

@@ -164,20 +164,20 @@ script = ExtResource("4_pnodg")
 y_sort_enabled = true
 position = Vector2(40, 175)
 
-[node name="BaseBuilding" parent="Buildings" unique_id=701582952 groups=["buildings"] instance=ExtResource("7_ugc7e")]
-position = Vector2(-121, -18)
+[node name="Merchant" parent="Buildings" unique_id=2080866002 instance=ExtResource("11_y0wk6")]
+position = Vector2(-135, 72)
 
-[node name="StoneMason" parent="Buildings" unique_id=1702894342 groups=["buildings"] instance=ExtResource("9_4yiul")]
-position = Vector2(180, 62)
+[node name="StoneMason" parent="Buildings" unique_id=1702894342 instance=ExtResource("9_4yiul")]
+position = Vector2(177, 56)
 
-[node name="FishMonger" parent="Buildings" unique_id=927949800 groups=["buildings"] instance=ExtResource("10_13fjh")]
-position = Vector2(7, 174)
+[node name="FishMonger" parent="Buildings" unique_id=927949800 instance=ExtResource("10_13fjh")]
+position = Vector2(-73, -69)
 
-[node name="Merchant" parent="Buildings" unique_id=2080866002 groups=["buildings"] instance=ExtResource("11_y0wk6")]
-position = Vector2(-135, 66)
+[node name="BaseBuilding" parent="Buildings" unique_id=701582952 instance=ExtResource("7_ugc7e")]
+position = Vector2(6, 196)
 
-[node name="Player" parent="." unique_id=2086189498 groups=["player"] instance=ExtResource("4_nwi3h")]
-position = Vector2(29, 171)
+[node name="Player" parent="." unique_id=2086189498 instance=ExtResource("4_nwi3h")]
+position = Vector2(75, 192)
 
 [node name="InteractionManager" parent="." unique_id=1317930666 node_paths=PackedStringArray("player") instance=ExtResource("5_nwi3h")]
 player = NodePath("../Player")

@@ -24,6 +24,7 @@ func unlock() -> void:
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	#print("Body entered")
+	#print(get_stack())
 	Global.interaction_manager.register_interaction(interactArea)
 
 func _on_interact_area_body_exited(body: Node2D) -> void:

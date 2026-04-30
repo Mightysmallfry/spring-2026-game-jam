@@ -11,6 +11,8 @@ collisionArea = NodePath("CollisionArea")
 buildingName = "Fishmonger"
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=716169724]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractArea" unique_id=1251468839]
 polygon = PackedVector2Array(0, 64, 90, 18, 0, -32, -90, 18)
