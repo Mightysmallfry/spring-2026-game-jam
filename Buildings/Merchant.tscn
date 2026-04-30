@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://tjkne3ynm0mp" path="res://Buildings/merchant.gd" id="1_tnr4m"]
 [ext_resource type="Texture2D" uid="uid://bhso2lx4jfby5" path="res://Assets/Buildings/Merchant.png" id="2_tnr4m"]
 
-[node name="Merchant" type="Node2D" unique_id=2080866002 node_paths=PackedStringArray("buildingSprite", "interactArea", "collisionArea")]
+[node name="Merchant" type="Node2D" unique_id=2080866002 node_paths=PackedStringArray("buildingSprite", "interactArea", "collisionArea") groups=["buildings"]]
 script = ExtResource("1_tnr4m")
 buildingSprite = NodePath("BuildingSprite")
 interactArea = NodePath("InteractArea")
